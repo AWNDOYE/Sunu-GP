@@ -303,7 +303,7 @@ export default function NewOrder() {
   const renderForm = () => {
     return (
       <div className="form-container">
-      <h1 className="titreInfos infoTrajet">COMMANDE</h1>
+        <h1 className="titreInfos infoTrajet">COMMANDE</h1>
         <Form onSubmit={handleSubmit}>
           {selectedProduct && (
             <>
@@ -523,7 +523,9 @@ export default function NewOrder() {
   return (
     <div className="divOrder" style={{ width: "100%" }}>
       {/* NewOrder {trajetId} */}
-      <h1 style={{textAlign:"center", color:"#008080", marginTop:"1%"}}>NOUVELLE COMMANDE</h1>
+      <h1 style={{ textAlign: "center", color: "#008080", marginTop: "1%" }}>
+        NOUVELLE COMMANDE
+      </h1>
       <Card className="cardFirst">
         <h1 className="titreInfos infoAuteurs">Informations GP</h1>
         <CardBody>
@@ -545,7 +547,6 @@ export default function NewOrder() {
           </Form>
           <h1 className="titreInfos infoTrajet">Informations TRAJET</h1>
           <Form className="divForm">
-            
             <Form.Group className="form-group">
               <Form.Label>Type Zone : </Form.Label>
               <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
@@ -582,10 +583,11 @@ export default function NewOrder() {
           <h1 className="titreInfos infoColist">LISTE DES COLIS</h1>
           <Form.Group controlId="infosColis" className="infos-colis">
             {listOfProduct.map((product, index) => (
-              
               <Card key={index} className="cardProduct">
-              <CardImg src={`http://localhost:5000/uploads/${product.colisImage}`}
-                  alt="Colis"></CardImg>
+                <CardImg
+                  src={`http://localhost:5000/uploads/${product.colisImage}`}
+                  alt="Colis"
+                ></CardImg>
                 {/* <img className="cardImg"
                   src={`http://localhost:5000/uploads/${product.colisImage}`}
                   alt="Colis"

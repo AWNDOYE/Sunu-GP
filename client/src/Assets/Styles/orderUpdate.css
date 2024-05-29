@@ -19,6 +19,7 @@
     justify-content: center;
     opacity: 90%;
     background-color: transparent;
+    border-radius: 2rem;
   }
   #bodyExpediteur{
    justify-content: center;
@@ -29,6 +30,7 @@
     margin-right: 35%;
     opacity: 90%;
     background-color: transparent;
+    border-radius: 2rem;
   }
   .form-group {
     display: flex;
@@ -38,7 +40,16 @@
     width: 100%;
     padding: 2%;
   }
-  
+  .listProduct{
+    border-radius: 2rem;
+    
+  }
+  .cardProduct{
+
+  }
+  .card-img{
+    width: 10rem;
+  }
   .form-group .label {
    /* justify-content: baseline;
     font-weight: bold;
@@ -47,7 +58,7 @@
   }
   .labelText{
     color: black;
-    font-weight: bold;
+    text-align: left;
   }
   .labelText:hover {
     border: 2px solid #007bff; 

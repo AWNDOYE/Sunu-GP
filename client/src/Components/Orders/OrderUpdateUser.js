@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Config from "../../Services/Config.json";
 import axios from "axios";
-import { Card, CardBody, Form, Button } from "react-bootstrap";
+import { Card, CardBody, Form, Button ,CardImg} from "react-bootstrap";
 import { formatISODate } from "./ChangeFormatDate";
 import { calculateCost } from "./CalculateCost";
 import { validerSaisie } from "./ValiderSaisie";
@@ -330,26 +330,26 @@ export default function OrderUpdate() {
 
               <Form.Group className="form-group labelText ">
                 <Form.Label>Nom Prénom : </Form.Label>
-                <Form.Text style={{color:"black"}}>{`${orderSelected.order_Utilisateurs.user_FirstName} ${orderSelected.order_Utilisateurs.user_LastName}`}</Form.Text>
+                <Form.Text className="labelText" >{`${orderSelected.order_Utilisateurs.user_FirstName} ${orderSelected.order_Utilisateurs.user_LastName}`}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group ">
                 <Form.Label>Numéro Téléphone: </Form.Label>
-                <Form.Text className="labelText">
+                <Form.Text className="labelText" >
                  {orderSelected.order_Utilisateurs.user_NumberPhone} 
                 </Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group ">
-                <Form.Label >Email : </Form.Label>
-                <Form.Text>
+                <Form.Label>Email : </Form.Label>
+                <Form.Text className="labelText">
                 {orderSelected.order_Utilisateurs.user_Email}
                 </Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group ">
                 <Form.Label>Adresse - Location : </Form.Label>
-                <Form.Text>
+                <Form.Text className="labelText">
                   {orderSelected.order_Utilisateurs.user_Address}
                 </Form.Text>
               </Form.Group>
@@ -359,23 +359,23 @@ export default function OrderUpdate() {
             <CardBody>
               <h2 style={{color:"#008080"}}>COLIS</h2>
               <Form.Group className="form-group ">
-                <Form.Label className="labelText">Type Colis : </Form.Label>
+                <Form.Label >Type Colis : </Form.Label>
                 <Form.Text className="labelText">{selectedProduct.colisTypeName}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group ">
-                <Form.Label className="labelText">Descriptif : </Form.Label>
+                <Form.Label >Descriptif : </Form.Label>
                 <Form.Text className="labelText">{selectedProduct.colisDescription}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group ">
                 {" "}
-                <Form.Label className="labelText">Prix / KG : </Form.Label>
+                <Form.Label >Prix / KG : </Form.Label>
                 <Form.Text className="labelText">{selectedProduct.colisPriceByKG}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group ">
-                <Form.Label className="labelText">Prix / L : </Form.Label>
+                <Form.Label>Prix / L : </Form.Label>
                 <Form.Text className="labelText">{selectedProduct.colisPriceByLitre}</Form.Text>
               </Form.Group>
             </CardBody>
@@ -386,11 +386,8 @@ export default function OrderUpdate() {
             <Form.Group >
               {listOfProducts.map((product, index) => (
                 <Card key={index} style={{ width: "25rem" }}>
-                  <img
-                    style={{ width: "25rem", height: "28rem" }}
-                    src={`http://localhost:5000/uploads/${product.colisImage}`}
-                    alt="Colis"
-                  />
+                  <CardImg src={`http://localhost:5000/uploads/${product.colisImage}`}
+                    alt="Colis"></CardImg>
                   <CardBody>
                     <h3>
                       <strong>{product.colisTypeName}</strong>
