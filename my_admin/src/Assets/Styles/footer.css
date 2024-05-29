@@ -1,0 +1,84 @@
+.footer {
+    background-color: #008080; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    margin-right: 5.5%;
+    margin-left: 5.5%;
+    height: 20%;
+    margin-bottom: 2px;
+    margin-top: 5%;
+  }
+  
+  .row {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments */
+    justify-content: space-between; /* Alignement des éléments de manière égale */
+  
+    
+  }
+  h5{
+    text-align: center;
+  }
+  
+  .col-md-6 {
+    width: calc(50% - 20px); /* Largeur de chaque colonne */
+  
+  }
+  .adresse{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 1px;
+    padding: 1px;
+  }
+  .adresse h6{
+    padding : 1%
+  }
+  .adresse p{
+    font-size: 15px;
+    padding-top: 13px;
+  }
+  .contact {
+    display: flex;
+    flex-direction:row ; /* Afficher les sous-divs en colonne */
+    align-items: center; /* Centrer les éléments horizontalement */
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 80%;
+  }
+  
+  .InfoContact {
+    display: flex;
+    align-items: center; /* Centrer les éléments horizontalement */
+    margin: 1%;
+    width: 12%; /* Utilisation de 80% de la largeur parente */
+  }
+  .InfoContact p {
+    font-size: 10px;
+  }
+  .icone {
+    padding-right: 10px; /* Espacement à droite de l'icône */
+  }
+  
+  .col-md-6 h6 {
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 10px; /* Espacement en bas */
+  }
+  h3 {
+    font-weight: bold; /* Police en gras */
+    margin-bottom: 20px; /* Espacement en bas */
+  }
+  
+  h6{
+    text-align: center;
+  }
+  p {
+    margin: 2px 0; /* Espacement autour des paragraphes */
+  }
+  
+  .footer div {
+    margin-bottom: 2px; /* Espacement entre les éléments */
+  }
+  
+  .footer div p {
+    margin-left: 5px; /* Espacement entre l'icône et le texte */
+  }
+  

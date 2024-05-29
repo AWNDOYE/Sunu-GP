@@ -1,0 +1,93 @@
+@import '../Styles/MesStyles/styles.scss';
+
+.list {
+  border-radius: 1rem;
+  margin: 2%;
+  padding: 1%;
+  display: grid;
+  grid-template-columns: 1fr 1fr ; /* Two equal columns */
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Mycard {
+  width: 35rem;
+  border: solid 3px $background-primary-color;
+  padding: 3px;
+  margin-top: 5px;
+  margin-left: 10%;
+  border-radius: 1rem;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  gap: 10rem;
+  height: 300px;
+  position: relative; /* Make the card the positioning context for the button */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-rows: auto auto auto; /* Three rows */
+  grid-gap: 13px; /* Space between grid items */
+  margin-top: 5px;
+  justify-content: center;
+  padding-left: 1%;
+}
+
+.lieuDepart, .dateDepart, .contactGp,
+.lieuDestination, .dateArrivee, .contactTel {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  // margin-left: 1%;
+}
+
+.lieuDepart h4, .lieuDestination h4,
+.dateDepart h4, .dateArrivee h4,
+.contactGp h4, .contactTel h4 {
+  margin: 3%; /* Remove margins for better alignment */
+  width: 150px; /* Fixed width for titles to align properly */
+}
+
+
+.lieuDepart p, .lieuDestination p,
+.dateDepart p, .dateArrivee p,
+.contactGp p, .contactTel p {
+  margin: 0; /* Remove margins for better alignment */
+  flex: 1; /* Take remaining space */
+  min-width: 25%;
+  margin-left: 1%;
+  font-size: small;
+}
+
+.zone {
+  text-align: center;
+  font-family: $font-third;
+  color: $background-primary-color;
+}
+
+.comments {
+  width: 100%;
+ /* Adjust to fit content */
+  padding: 1px;
+  height: 2%;
+}
+
+.btnOrder {
+  position: absolute; /* Fix the position of the button */
+  bottom: 0rem; /* Distance from the bottom of the card */
+  left: 50%; /* Center the button horizontally */
+  transform: translateX(-50%); /* Adjust the horizontal position */
+  height: 2.5rem;
+  width: 100%; /* Width of the button */
+  background-color: #008080 ;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: $font-third;
+  border-radius: .4rem;
+  border: none;
+  cursor: pointer;
+}

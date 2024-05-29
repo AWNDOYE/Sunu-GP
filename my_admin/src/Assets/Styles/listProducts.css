@@ -1,0 +1,57 @@
+h1{
+    text-align: center;
+    color: #008cba;
+    margin: 10px auto;
+}
+.product-table {
+    width: 80%;
+    margin: 50px auto;
+    border-collapse: collapse; /* Fusionner les bordures des cellules */
+  }
+  
+  .product-table th,
+  .product-table td {
+    padding: 8px; /* Espacement interne des cellules */
+    border-bottom: 1px solid #ddd; /* Bordure inférieure des cellules */
+  }
+  
+  .product-table th {
+    background-color: #f2f2f2; /* Couleur de fond pour les en-têtes de colonne */
+    text-align: center; /* Alignement du texte à gauche */
+  }
+  
+  .product-table td {
+    text-align: center; /* Alignement du texte au centre */
+  }
+  
+  .table-row {
+    background-color: #c70f0f; /* Couleur de fond pour les lignes paires */
+  }
+  
+  .table-row:hover {
+    background-color: #ffffff; /* Couleur de fond au survol */
+    cursor: pointer;
+  }
+  
+  .table-row:focus {
+    background-color: #791c1c; /* Couleur de fond lorsqu'une ligne est sélectionnée */
+    
+  }
+  .table-row:nth-child(even) {
+    background-color: #b00d0d; /* Couleur de fond pour les lignes impaires */
+  }
+  
+  /* Style des boutons */
+  .product-table button {
+    padding: 6px 10px; /* Espacement interne des boutons */
+    margin: 2px; /* Marge autour des boutons */
+    border: none; /* Suppression de la bordure */
+    background-color: #008cba; /* Couleur de fond des boutons */
+    color: #ffffff; /* Couleur du texte des boutons */
+    cursor: pointer; /* Curseur pointer au survol */
+  }
+  
+  .product-table button:hover {
+    background-color: #005f6b; /* Couleur de fond des boutons au survol */
+  }
+  

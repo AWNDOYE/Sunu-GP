@@ -1,0 +1,86 @@
+#divContainer {
+  padding: 0%;
+  border-radius: 1%;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-right: 5%;
+ } 
+ #myContainer{
+  width: 60%;
+ }
+ #myRow{
+  padding-top: 40px;
+  border-radius: 15%;
+  display: flex;
+  height: 80%;
+  justify-content: space-around;
+}
+.entete{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10%;
+}
+.logo{
+  width: 25%;
+  height: 15%;
+  border-radius: 2%;
+}
+ .FilleConnecte {
+  width: 90%;
+  height: 98%; /* Hauteur ajustée en conséquence*/
+  display: block; /* Afficher comme bloc pour centrer correctement */
+  margin: 0 auto; /* Centrer horizontalement */
+  padding: 10% 0 0 0;
+  margin-left: 15%;
+  border-radius: 2%;
+}
+.tittle{
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+.label{
+  color: grey;
+  font-weight: bold;
+}
+.layout-signup{
+  margin-top: 10%;
+  height: 90%;
+  padding:  2%;
+  width: 85%;
+  margin-right: 25%;
+  background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094238.png');
+  background-size: cover;
+  border-radius: 2%;
+}
+
+/* Pour ajuster la largeur du formulaire */
+.form {
+  max-width: 400px;
+  margin: auto;
+}
+
+/* Pour espacer les éléments du formulaire */
+.group {
+  margin-bottom: 2rem;
+}
+#new-user{
+  text-align: right;
+}
+/* Pour centrer le bouton de soumission */
+#btn {
+  display: block;
+  margin: auto;
+  margin-top: 25px;
+  width: 100%;
+}
+.link{
+  color: blue;
+  font-size: 20px;
+}
+@media (max-width: 576px) {
+  .form {
+    max-width: 300px;
+  }
+}

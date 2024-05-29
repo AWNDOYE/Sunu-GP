@@ -1,0 +1,103 @@
+  .divOrder {
+    width: 90%;
+    margin: 1%;
+    margin-left: 5%;
+    
+   
+  }
+  .cardExpColis{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    background-image: url('../Images/delivery-concept-portrait-happy-african-american-delivery-man-red-cloth-holding-box-package-isolated-grey-studio-background-copy-space.jpg');
+    background-size: cover;
+    border-radius: 2rem;
+  }
+  .expediteur{
+    width: 40%;
+    justify-content: center;
+    opacity: 90%;
+    background-color: transparent;
+  }
+  #bodyExpediteur{
+   justify-content: center;
+   padding-left: 10%;
+  }
+  .infosColis{
+    width: 40%;
+    margin-right: 35%;
+    opacity: 90%;
+    background-color: transparent;
+  }
+  .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 2%;
+  }
+  
+  .form-group .label {
+   /* justify-content: baseline;
+    font-weight: bold;
+    margin-bottom: 0;
+    width: 100%; */
+  }
+  .labelText{
+    color: black;
+    font-weight: bold;
+  }
+  .labelText:hover {
+    border: 2px solid #007bff; 
+    border-radius: 5%;
+    cursor: pointer; /* Change la couleur de la bordure au survol */
+  }
+  .form-group input,
+  .form-group select,
+  .form-group .form.text {
+    display: flex;
+    padding-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 20%;
+  }
+  
+  .form-group input:disabled {
+    background-color: #e9ecef;
+  }
+  
+  .form-group .form-text {
+    border: none;
+    padding: 0;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .button-group button {
+    width: 48%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  .cardProduct {
+    width: 18rem;
+    max-height: 40rem;
+    border: #008080 solid 2px;
+  }
+  
+
+  

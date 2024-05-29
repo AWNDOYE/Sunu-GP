@@ -1,0 +1,143 @@
+/* Style du bouton du menu utilisateur */
+
+.user-menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white,
+  }
+  #selected {
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .button01 {
+    margin-left: 100%;
+    width: 150%;
+    color: white;
+  }
+  
+  .buttonSearch {
+    background-color: maroon;
+  }
+  .mr-auto{
+    margin-top:2%;
+    margin-left: 10%;
+    width: 185%;
+    padding: 5%;
+
+  }
+  #myLogo {
+    margin: 2px;
+    padding : 3%;
+    width: 100px;
+    height: 90%;
+    border-radius: 15%;
+  }
+  
+  .navLink {
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+    font-size: 18px;
+  font-weight: 500;
+  transition: color 0.2s;
+  text-decoration: none;
+  }
+  .navConnect{
+    margin-left: 110%;
+    padding-right: 2px;
+  }
+  .navdisConnect{
+    margin-left: 40%;
+    padding-top: 8px;
+    width: auto;
+  }
+  
+  .navLink:hover {
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+  }
+  
+  #navBar {
+    width: 100%; 
+    background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094238.png');
+    background-size: cover;
+    display: flex;
+    padding :1%;
+    margin-right: 1%;
+    margin: 1%;
+  }
+ 
+  
+  /* Style du menu déroulant */
+  .dropdown-menu {
+    display: none;
+    /* Par défaut, le menu est caché */
+    position: absolute;
+    /* Position absolue pour le placer correctement par rapport à son conteneur */
+    top: 58%;
+    /* Affiche le menu sous le bouton */
+    left: 86%;
+    /* Aligner le menu avec le côté gauche du bouton */
+    list-style: none;
+    /* Supprime les puces de liste */
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    /* Couleur de fond du menu */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Ombre pour un aspect flottant */
+  }
+  
+  /* Afficher le menu lorsque isOpen est true */
+  .user-menu button+.dropdown-menu {
+    display: block;
+  }
+  
+  /* Style des éléments du menu */
+  .dropdown-menu li {
+    padding: 10px;
+    text-decoration: none;
+    
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #008080;
+  }
+  
+  /* Style des liens dans le menu */
+  .dropdown-menu li button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .navbar-nav .nav-link {
+    color: white;
+  }
+
+.navbar-nav .nav-link:hover {
+  color: black;
+}
+
+
+
+
+
+
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+  }
+}
+
+
+

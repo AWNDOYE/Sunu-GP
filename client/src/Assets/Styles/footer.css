@@ -1,0 +1,96 @@
+.footer {
+  background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 171220.png'); /* Chemin relatif à partir du dossier public */
+  background-size: cover;
+  background-position: center;
+    color: #fff; /* Couleur du texte */
+    padding: 1%;
+    height: 10%;
+    margin-bottom: 2px;
+    margin-top: 5%;
+    width: 98%;
+    border-radius: 1%;
+  }
+  
+  .row {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments */
+    justify-content: space-between; /* Alignement des éléments de manière égale */
+  
+    
+  }
+  h5{
+    text-align: center;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gold;
+    font-weight: 900;
+  }
+  
+  .col-md-6 {
+    width: calc(50% - 20px); /* Largeur de chaque colonne */
+  
+  }
+  .adresse{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+   
+  }
+  .adresse h6{
+    padding : 1%
+  }
+  .adresse p{
+    font-size: 15px;
+    padding-top: 5px;
+  }
+  .contact {
+    display: flex;
+    flex-direction:row ; /* Afficher les sous-divs en colonne */
+    align-items: center; /* Centrer les éléments horizontalement */
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 15%;
+  }
+  
+  .InfoContact {
+    display: flex;
+    align-items: center; /* Centrer les éléments horizontalement */
+   margin-left: 3%;
+   margin-top: 1px;
+    width: 30%; /* Utilisation de 80% de la largeur parente */
+  }
+  .InfoContact p {
+    padding-top: 10px;
+    font-size: 15px;
+  }
+  .icone {
+    padding-right: 2px; /* Espacement à droite de l'icône */
+  }
+  
+  .col-md-6 h6 {
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 10px; /* Espacement en bas */
+  }
+  h3 {
+    font-weight: bold; /* Police en gras */
+    margin-bottom: 20px; /* Espacement en bas */
+  }
+  .footer h4{
+    text-align: center; /* Centrer le texte */
+    font-size: 20px;
+  }
+  h6{
+    text-align: center;
+  }
+  p {
+    margin: 2px 0; /* Espacement autour des paragraphes */
+  }
+  
+  .footer div {
+    margin-bottom: 2px; /* Espacement entre les éléments */
+  }
+  
+  .footer div p {
+    margin-left: 5px; /* Espacement entre l'icône et le texte */
+   
+  }
+  

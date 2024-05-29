@@ -1,0 +1,94 @@
+/* Style du bouton du menu utilisateur */
+.user-menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white,
+}
+#selected {
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.button01 {
+  margin-left: 100%;
+  width: 150%;
+  color: white;
+}
+
+.buttonSearch {
+  background-color: maroon;
+}
+
+#myLogo {
+  margin: 2px;
+  width: 80px;
+  height: 30%;
+  border-radius: 15%;
+}
+
+.navLink {
+  font-weight: bold;
+  color: white;
+  margin-right: 20px;
+}
+
+.navLink:hover {
+  font-weight: 700;
+  color: white;
+  text-decoration: solid;
+}
+
+#navBar {
+  width: 100%;
+  background-color: #008080;
+}
+
+/* Style du menu déroulant */
+.dropdown-menu {
+  display: none;
+  /* Par défaut, le menu est caché */
+  position: absolute;
+  /* Position absolue pour le placer correctement par rapport à son conteneur */
+  top: 58%;
+  /* Affiche le menu sous le bouton */
+  left: 86%;
+  /* Aligner le menu avec le côté gauche du bouton */
+  list-style: none;
+  /* Supprime les puces de liste */
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  /* Couleur de fond du menu */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Ombre pour un aspect flottant */
+}
+
+/* Afficher le menu lorsque isOpen est true */
+.user-menu button+.dropdown-menu {
+  display: block;
+}
+
+/* Style des éléments du menu */
+.dropdown-menu li {
+  padding: 10px;
+}
+
+.dropdown-menu li:hover {
+  background-color: #008080;
+}
+
+/* Style des liens dans le menu */
+.dropdown-menu li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  color: #007bff;
+}
+
+.buttonSearch:hover {
+  background-color: #0056b3;
+}
