@@ -45,11 +45,11 @@
   text-decoration: none;
   }
   .navConnect{
-    margin-left: 110%;
+    margin-left: 100%;
     padding-right: 2px;
   }
   .navdisConnect{
-    margin-left: 40%;
+    margin-left: 38%;
     padding-top: 8px;
     width: auto;
   }
@@ -113,8 +113,6 @@
     border: none;
     cursor: pointer;
   }
-  
-
   .navbar-nav .nav-link {
     color: white;
   }
@@ -122,13 +120,6 @@
 .navbar-nav .nav-link:hover {
   color: black;
 }
-
-
-
-
-
-
-
 @media (max-width: 991.98px) {
   .navbar-nav {
     text-align: center;

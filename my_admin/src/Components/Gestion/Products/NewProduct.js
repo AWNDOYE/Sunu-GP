@@ -10,8 +10,9 @@ import {
   FormControl,
   FormLabel,
   Button,
+  CardTitle,
 } from "react-bootstrap";
-
+import "../../../Assets/Styles/allProduct.css"
 
 
 export default function NewProduct() {
@@ -104,107 +105,107 @@ export default function NewProduct() {
 
   return (
     <>
-      <p>NOUVEAU PRODUIT</p>
-      <Card>
-        <CardBody>
-          <Form>
-            <FormGroup>
-              <FormLabel>Type</FormLabel>
-              <FormControl
-                as="select"
-                name="colisTypeName"
-                value={newProduct.colisTypeName}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    colisTypeName: e.target.value,
-                  })
-                }
-                required
-              >
-                <option value="">Sélectionner un type</option>
-                <option value="Boîte - de 5 Kg">Boîte - de 5 Kg</option>
-                <option value="Boîte + de 5 Kg">Boîte + de 5 Kg</option>
-                <option value="Carton - de 5 Kg">Carton - de 5 Kg</option>
-                <option value="Carton + de 5 Kg">Carton + de 5 Kg</option>
-                <option value="Produits Liquides">Produits Liquides</option>
-                <option value="Valise 23kg Max">Valise 23kg Max</option>
-                <option value="Courrier - Enveloppe - A3">Courrier - Enveloppe - A3</option>
-                <option value="Courrier - Enveloppe - A4">Courrier - Enveloppe - A4</option>
-                <option value="Courrier - Enveloppe - A5">Courrier - Enveloppe - A5</option>
-                <option value="Emballage - Sachet - Sac">Emballage - Sachet - Sac</option>
-                
-                {/* Ajoutez d'autres options ici */}
-              </FormControl>
-            </FormGroup>
-            <FormGroup>
-              <FormLabel>Description</FormLabel>
-              <FormControl
-                type="text"
-                name="colisDescription"
-                value={newProduct.colisDescription}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    colisDescription: e.target.value,
-                  })
-                }
-                required
-              />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel>Prix / KG</FormLabel>
-              <FormControl
-                type="number"
-                name="colisPriceByKG"
-                value={newProduct.colisPriceByKG}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    colisPriceByKG: e.target.value,
-                  })
-                }
-                required
-              />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel>Prix / L</FormLabel>
-              <FormControl
-                type="number"
-                name="colisPriceByLitre"
-                value={newProduct.colisPriceByLitre}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    colisPriceByLitre: e.target.value,
-                  })
-                }
-                required
-              />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel>Image</FormLabel>
-              <FormControl
-                type="file"
-                name="colisImage"
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    colisImage: e.target.files[0],
-                  })
-                }
-                required
-              />
-            </FormGroup>
-            <Button variant="primary" onClick={handleAdd}>
+    <Card className="card">
+    <CardTitle className="tittleCard">NOUVEAU PRODUIT</CardTitle>
+      <CardBody className="card-body">
+        <Form>
+          <FormGroup className="form-group">
+            <FormLabel>Type</FormLabel>
+            <FormControl
+              as="select"
+              name="colisTypeName"
+              value={newProduct.colisTypeName}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  colisTypeName: e.target.value,
+                })
+              }
+              required
+            >
+              <option value="">Sélectionner un type</option>
+              <option value="Boîte - de 5 Kg">Boîte - de 5 Kg</option>
+              <option value="Boîte + de 5 Kg">Boîte + de 5 Kg</option>
+              <option value="Carton - de 5 Kg">Carton - de 5 Kg</option>
+              <option value="Carton + de 5 Kg">Carton + de 5 Kg</option>
+              <option value="Produits Liquides">Produits Liquides</option>
+              <option value="Valise 23kg Max">Valise 23kg Max</option>
+              <option value="Courrier - Enveloppe - A3">Courrier - Enveloppe - A3</option>
+              <option value="Courrier - Enveloppe - A4">Courrier - Enveloppe - A4</option>
+              <option value="Courrier - Enveloppe - A5">Courrier - Enveloppe - A5</option>
+              <option value="Emballage - Sachet - Sac">Emballage - Sachet - Sac</option>
+            </FormControl>
+          </FormGroup>
+          <FormGroup className="form-group">
+            <FormLabel>Description</FormLabel>
+            <FormControl
+              type="text"
+              name="colisDescription"
+              value={newProduct.colisDescription}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  colisDescription: e.target.value,
+                })
+              }
+              required
+            />
+          </FormGroup>
+          <FormGroup className="form-group">
+            <FormLabel>Prix / KG</FormLabel>
+            <FormControl
+              type="number"
+              name="colisPriceByKG"
+              value={newProduct.colisPriceByKG}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  colisPriceByKG: e.target.value,
+                })
+              }
+              required
+            />
+          </FormGroup>
+          <FormGroup className="form-group">
+            <FormLabel>Prix / L</FormLabel>
+            <FormControl
+              type="number"
+              name="colisPriceByLitre"
+              value={newProduct.colisPriceByLitre}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  colisPriceByLitre: e.target.value,
+                })
+              }
+              required
+            />
+          </FormGroup>
+          <FormGroup className="form-group">
+            <FormLabel>Image</FormLabel>
+            <FormControl
+              type="file"
+              name="colisImage"
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  colisImage: e.target.files[0],
+                })
+              }
+              required
+            />
+          </FormGroup>
+          <div className="button-group">
+            <Button className="btn btn-primary" onClick={handleAdd}>
               Ajouter
             </Button>
-            <Button variant="primary" onClick={handleCancel}>
-              Annuler{" "}
+            <Button className="btn btn-primary" onClick={handleCancel}>
+              Annuler
             </Button>
-          </Form>
-        </CardBody>
-      </Card>
-    </>
+          </div>
+        </Form>
+      </CardBody>
+    </Card>
+  </>
   );
 }

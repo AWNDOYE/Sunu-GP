@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../Assets/Styles/sectionInfos.scss";
 import { Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { Fade, Slide, Zoom } from "react-awesome-reveal";
 
 // import FontAwesomeIcon
@@ -11,9 +11,9 @@ export default function SectionInfos() {
   const handleClickGP = () => {
     navigate("/home/trajetList");
   };
-  const handleClickColis = () => {
-    navigate("/product");
-  };
+  // const handleClickColis = () => {
+  //   navigate("/product");
+  // };
 
   return (
     <div className="infos">
@@ -30,7 +30,7 @@ export default function SectionInfos() {
             </h2>{" "}
             <img
               style={{ width: "20rem", borderRadius: "5%" }}
-              src="/WhatsApp Image 2024-05-28 at 8.23.15 AM.jpeg"
+              src="/WhatsApp Image 2024-05-28 at 8.23.15 AM.jpeg" alt="colis"
             />
           </Slide>
         </div>

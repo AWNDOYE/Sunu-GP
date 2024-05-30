@@ -4,7 +4,7 @@ import "../../../Assets/Styles/listProducts.css"
 import Config from "../../../Services/Config.json";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import "../../../Assets/Styles/allTable.css"
 
 export default function Products() {
   const [listOfProduct, setListProducts] = useState([]);
@@ -34,31 +34,31 @@ export default function Products() {
 
 
 
-  return <div>
-  <h1><strong>Liste des types de colis</strong></h1>
-<Link to={`/home/admin/${userId}/products/newProduct`}>Nouveau Produit</Link>
-   <table className="product-table">
-      <thead  >
-        <tr className="table-row">
-          <th>Type</th>
-          <th>Description</th>
-          <th>Prix / KG</th>
-          <th>Prix / L</th>
+  return <div className="product-list-container">
+  <h1 className="product-list-title"><strong>LISTE DES TYPES DE COLIS</strong></h1>
+  <Link to={`/home/admin/${userId}/products/newProduct`} className="new-product-link">Nouveau Produit</Link>
+  <table className="product-table">
+    <thead>
+      <tr className="table-row">
+        <th>Type</th>
+        <th>Description</th>
+        <th>Prix / KG</th>
+        <th>Prix / L</th>
+      </tr>
+    </thead>
+    <tbody>
+      {listOfProduct.map((product, index) => (
+        <tr key={index}>
+          <td>{product.colisTypeName}</td>
+          <td>{product.colisDescription}</td>
+          <td>{product.colisPriceByKG}</td>
+          <td>{product.colisPriceByLitre}</td>
+          <td>
+            <Link to={`/home/admin/${userId}/products/${product._id}`} className="product-link"><strong>Afficher le produit</strong></Link>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        {listOfProduct.map((product, index) => (
-          <tr key={index}>
-            <td>{product.colisTypeName}</td>
-            <td>{product.colisDescription}</td>
-            <td>{product.colisPriceByKG}</td>
-            <td>{product.colisPriceByLitre}</td>
-            <td>
-            <Link to={`/home/admin/${userId}/products/${product._id}`}><strong>Afficher le produit</strong></Link>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>;
+      ))}
+    </tbody>
+  </table>
+</div>
 }

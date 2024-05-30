@@ -66,7 +66,7 @@ useEffect(() => {
             <Nav className="mr-auto">
             {userActif && userActif.userEmail  ? (
                 <>
-                  <Nav.Link  className="navLink" as={Link} to={`/home/${userId}`}>
+                  <Nav.Link  className="mynavLink" as={Link} to={`/home/${userId}`}>
                   Acceuil
                   </Nav.Link>
                 </>

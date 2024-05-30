@@ -1,12 +1,10 @@
-import React, { useState,useEffect } from "react";
-import { Form, Button,Card,CardBody } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Form, Button, Card, CardBody, CardTitle } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Config from "../../../Services/Config.json";
 
-
 export default function UserUpdate() {
-
   const [userData, setUserData] = useState({
     userFirstName: "",
     userLastName: "",
@@ -27,8 +25,7 @@ export default function UserUpdate() {
     }));
   };
 
-
-  const findUser= async () => {
+  const findUser = async () => {
     try {
       const response = await axios.get(
         `${Config.api_url}/getUserFind/${userIdChange}`
@@ -43,36 +40,34 @@ export default function UserUpdate() {
     findUser(); // Appeler findProduct une fois que le composant est monté
   }, []);
 
-
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
     console.log(userData);
-    try {     
-     const response = await axios
-     .put(`${Config.api_url}/getUserUpdated/${userIdChange}`, userData)
-     .then((response) => {
-       console.log("Mise à jour réussie !", response.data.userUpdated);
-       alert(" La mise à jour s'est déroulée avec succès");
-       navigate(-1); // Revenir à la page précédente
-       // Peut-être mettre à jour l'état local ou afficher un message de succès ici
-     })
-   } catch (error) {
-     console.error("Erreur lors de la mise à jour :", error);
-   }
+    try {
+      const response = await axios
+        .put(`${Config.api_url}/getUserUpdated/${userIdChange}`, userData)
+        .then((response) => {
+          console.log("Mise à jour réussie !", response.data.userUpdated);
+          alert(" La mise à jour s'est déroulée avec succès");
+          navigate(-1); // Revenir à la page précédente
+          // Peut-être mettre à jour l'état local ou afficher un message de succès ici
+        });
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour :", error);
+    }
   };
 
-  const handleCancel = () =>{
+  const handleCancel = () => {
     navigate(-1); // Revenir à la page précédente
-  }
-
+  };
 
   return (
-    <div><div>
-    <h1>MODIFICATION UTILISATEUR</h1>
-      <Card>
-        <CardBody>
+    <div>
+      <Card className="card">
+        <CardTitle className="tittleCard">MODIFICATION UTILISATEUR</CardTitle>
+        <CardBody className="card-body">
           <Form onSubmit={handleSubmitUpdate}>
-            <Form.Group controlId="userFirstName">
+            <Form.Group className="form-group" controlId="userFirstName">
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 type="text"
@@ -83,7 +78,7 @@ export default function UserUpdate() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userLastName">
+            <Form.Group className="form-group" controlId="userLastName">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 type="text"
@@ -94,7 +89,7 @@ export default function UserUpdate() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userNumberPhone">
+            <Form.Group className="form-group" controlId="userNumberPhone">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
@@ -105,7 +100,7 @@ export default function UserUpdate() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userAddress">
+            <Form.Group className="form-group" controlId="userAddress">
               <Form.Label>Address</Form.Label>
               <Form.Control
                 type="text"
@@ -116,7 +111,7 @@ export default function UserUpdate() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userEmail">
+            <Form.Group className="form-group" controlId="userEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -127,18 +122,7 @@ export default function UserUpdate() {
               />
             </Form.Group>
 
-            {/* <Form.Group controlId="userPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="userPassword"
-                value={userData.userPassword}
-                onChange={handleChange}
-                required
-              />
-            </Form.Group> */}
-
-            <Form.Group controlId="userRole">
+            <Form.Group className="form-group" controlId="userRole">
               <Form.Label>Role</Form.Label>
               <Form.Control
                 as="select"
@@ -152,14 +136,17 @@ export default function UserUpdate() {
                 {/* Ajoutez d'autres options de rôle selon vos besoins */}
               </Form.Control>
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-            <Button variant="primary" onClick={handleCancel}>Annuler </Button>
+            <div className="button-group">
+              <Button className="btn btn-primary" variant="primary" type="submit">
+                Modifier
+              </Button>
+              <Button className="btn btn-primary" variant="primary" onClick={handleCancel}>
+                Annuler{" "}
+              </Button>
+            </div>
           </Form>
         </CardBody>
       </Card>
-    </div></div>
-  )
+    </div>
+  );
 }

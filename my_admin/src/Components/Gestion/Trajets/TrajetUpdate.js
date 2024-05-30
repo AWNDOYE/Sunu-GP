@@ -5,6 +5,8 @@ import {
   CardBody,
   Form,
   Button,
+  CardTitle,
+  CardSubtitle
 } from "react-bootstrap";
 
 import citiesWithAirports from "../../../Data/TownsList";
@@ -12,6 +14,8 @@ import regionsSenegal from "../../../Data/RegionalList";
 import neighborhoodsDakar from "../../../Data/DepartementList";
 import Config from "../../../Services/Config.json";
 import axios from "axios";
+import "../../../Assets/Styles/allProduct.css";
+
 
 export default function TrajetUpdate() {
 
@@ -102,6 +106,7 @@ export default function TrajetUpdate() {
     e.preventDefault();
     // Envoyer les données du formulaire au backend ou effectuer d'autres actions
     console.log(trajet);
+
   };
 //************************************************************************ */
 
@@ -173,12 +178,16 @@ const handleDelete = async () => {
   return (
     <div>
       {" "}
-      <Card>
-        <CardBody>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="trajetAuteurs">
-              <Form.Label>Informations de l'auteur</Form.Label>
-
+      <Card className="card cardChangeProduct cardTrajet">
+      <CardTitle className="tittleCard">MODIFICATION TRAJET</CardTitle>
+      <Form onSubmit={handleSubmit}>
+        <CardBody className="card-body cardChangeBody notAlignItems">
+          
+        <div style={{ width: "40rem" }}>
+            <CardSubtitle className="infoAuteurTrajet">
+              INFORMATION AUTEUR
+            </CardSubtitle>
+<Form.Group controlId="trajetAuteurs">
               <Form.Label>Nom du GP</Form.Label>
               <Form.Control
                 type="text"
@@ -186,6 +195,8 @@ const handleDelete = async () => {
                 value={trajet.trajetAuteurs.userFirstName}
                 onChange={() => {}}
               />
+              </Form.Group>
+              <Form.Group className="form-group" controlId="trajetAuteurs">
               <Form.Label>Prénom du GP</Form.Label>
               <Form.Control
                 type="text"
@@ -193,6 +204,8 @@ const handleDelete = async () => {
                 value={trajet.trajetAuteurs.userLastName}
                 onChange={() => {}}
               />
+              </Form.Group>
+              <Form.Group className="form-group" controlId="trajetAuteurs">
               <Form.Label>Adresse Email</Form.Label>
               <Form.Control
                 type="text"
@@ -200,6 +213,8 @@ const handleDelete = async () => {
                 value={trajet.trajetAuteurs.userEmail}
                 onChange={() => {}}
               />
+              </Form.Group>
+              <Form.Group className="form-group" controlId="trajetAuteurs">
               <Form.Label>Numéro Téléphone</Form.Label>
               <Form.Control
                 type="text"
@@ -207,10 +222,13 @@ const handleDelete = async () => {
                 value={trajet.trajetAuteurs.userNumberPhone}
                 onChange={() => {}}
               />
-
-              {/* Ajoutez des champs supplémentaires pour userFirstName, userLastName, userNumberPhone ici */}
             </Form.Group>
-            <Form.Group controlId="zone">
+            </div>
+            <div style={{ width: "40rem" }}>
+            <CardSubtitle className="infoAuteurTrajet">
+                INFORMATION TRAJET
+              </CardSubtitle>
+            <Form.Group  className="form-group" controlId="zone">
               <Form.Label>Type Zone :</Form.Label>
               <Form.Select value={trajet.trajet_ZoneType} onChange={() => {}}>
                 <option value="" disabled>
@@ -224,7 +242,7 @@ const handleDelete = async () => {
             {/* *****************************************International - ville************************************ */}
             {trajet.trajet_ZoneType === "International" && (
               <>
-                <Form.Group controlId="country">
+                <Form.Group className="form-group" controlId="country">
                   <Form.Label>Pays de départ</Form.Label>
                   <Form.Select
                     value={trajet.trajet_PlaceDepartureName}
@@ -258,7 +276,7 @@ const handleDelete = async () => {
                   </Form.Select>
                 </Form.Group>
 
-                <Form.Group controlId="country">
+                <Form.Group className="form-group" controlId="country">
                   <Form.Label>Pays de destination</Form.Label>
                   <Form.Select
                     value={trajet.trajet_PlaceArrivalName}
@@ -296,7 +314,7 @@ const handleDelete = async () => {
             {/* *****************************************National - Regional************************************ */}
             {trajet.trajet_ZoneType === "Régional" && (
               <>
-                <Form.Group controlId="region">
+                <Form.Group className="form-group" controlId="region">
                   <Form.Label>Région de départ</Form.Label>
                   <Form.Select
                     value={trajet.trajet_PlaceDepartureName}
@@ -330,7 +348,7 @@ const handleDelete = async () => {
                   </Form.Select>
                 </Form.Group>
 
-                <Form.Group controlId="region">
+                <Form.Group  className="form-group" controlId="region">
                   <Form.Label>Région de destination</Form.Label>
                   <Form.Select
                     value={trajet.trajet_PlaceArrivalName}
@@ -368,7 +386,7 @@ const handleDelete = async () => {
             {/* *****************************************National - Département************************************ */}
             {trajet.trajet_ZoneType === "National" && (
               <>
-                <Form.Group controlId="departement">
+                <Form.Group className="form-group" controlId="departement">
                   <Form.Label>Ville de Départ:</Form.Label>
                   <Form.Select
                     value={trajet.trajet_PlaceDepartureName}
@@ -391,7 +409,7 @@ const handleDelete = async () => {
                   </Form.Select>
                 </Form.Group>
 
-                <Form.Group controlId="departement">
+                <Form.Group  className="form-group" controlId="departement">
                   <Form.Label>Ville de destination</Form.Label>
                   <Form.Select
                     value={trajet.trajet_PlaceArrivalName}
@@ -415,7 +433,7 @@ const handleDelete = async () => {
                 </Form.Group>
               </>
             )}
-            <Form.Group controlId="trajet_DateDepart">
+            <Form.Group className="form-group" controlId="trajet_DateDepart">
               <Form.Label>Date de départ</Form.Label>
               <Form.Control
                 type="date"
@@ -430,7 +448,7 @@ const handleDelete = async () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="trajet_DateArrivee">
+            <Form.Group  className="form-group" controlId="trajet_DateArrivee">
               <Form.Label>Date d'arrivée</Form.Label>
               <Form.Control
                 type="date"
@@ -445,7 +463,7 @@ const handleDelete = async () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="trajet_zonePrice">
+            <Form.Group  className="form-group" controlId="trajet_zonePrice">
               <Form.Label>Prix de la zone</Form.Label>
               <Form.Control
                 type="number"
@@ -460,7 +478,7 @@ const handleDelete = async () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="trajet_FrequenceZone">
+            <Form.Group className="form-group" controlId="trajet_FrequenceZone">
               <Form.Label>Fréquence de la zone</Form.Label>
               <Form.Select
                 name="trajet_FrequenceZone"
@@ -484,7 +502,7 @@ const handleDelete = async () => {
               </Form.Select>
             </Form.Group>
 
-            <Form.Group controlId="trajet_Commentaires">
+            <Form.Group className="form-group" controlId="trajet_Commentaires">
               <Form.Label>Commentaires</Form.Label>
               <Form.Control
                 as="textarea"
@@ -499,15 +517,24 @@ const handleDelete = async () => {
                 }}
               />
             </Form.Group>
-            <Button type="onSubmit" onClick={handleUpdateTrajet}>
+            {trajet.trajet_ListUsersForTrajet.map((trajet, index) => (
+            <tr key={index}>
+              <td>{trajet.userFirstName}</td>
+              
+            </tr>
+          ))}
+            <div className="button-group">
+            <Button type="onSubmit"  className="btn btn-primary" onClick={handleUpdateTrajet}>
               Modifier
             </Button>
-            <Button onClick={handleDelete}>Supprimer</Button>
-            <Button variant="primary" onClick={handleCancel}>
+            <Button className="btn btn-primary" onClick={handleDelete}>Supprimer</Button>
+            <Button  className="btn btn-primary" variant="primary" onClick={handleCancel}>
               Annuler{" "}
             </Button>
-          </Form>
+            </div>
+            </div>
         </CardBody>
+        </Form>
       </Card>
     </div>
   );

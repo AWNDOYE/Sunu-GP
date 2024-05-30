@@ -1,0 +1,75 @@
+.cardCard{
+    border: #008080 solid 1px;
+    margin: 2rem;
+    margin-left: 5rem;
+    padding: 3px;
+    width: 89%;
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+  } 
+.cardOrders {
+    border: #008080 solid 1px;
+    padding: 3px;
+    width: 90%;
+    border-radius: 1rem;
+    background-color: rgb(224, 220, 220);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0 1rem 4rem ;
+    gap: 2rem;
+  }
+
+  .cardOrder{
+    width: 20rem;
+    margin-top: 2rem;
+    gap: 2rem;
+    border: 1px solid #029c9c;
+  }
+ .noOrder{
+    background-image: url('../Images/WhatsApp\ Image\ 2024-05-28\ at\ 8.23.33\ AM.jpeg');
+    background-size: cover;
+    width: 100%;
+    height: 50rem;
+ }
+ .noOrderDetails{
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    padding-top: 5rem;
+    font-size: 3rem;
+ }
+ .noOrderLink{
+    color: blue;
+    text-align: center;
+    padding-left: 25rem;
+    padding-top: 15rem;
+ }
+.newBoutonOrder {
+    width: 100%;
+    background-color: #008080;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .newBoutonOrder:hover {
+    background-color: white;
+    color: #008080;
+    border: 1px solid #008080;
+    border-radius: 1rem;
+  }
+  .newBoutonOrderNotChange:hover {
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    border-radius: 1rem;
+  }
+  .cardTittle{
+    text-align: center;
+    color: #008080;
+    font-weight: bold;
+  }

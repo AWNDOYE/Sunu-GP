@@ -1,142 +1,204 @@
-.form-container {
-    padding: 20px;
-    background-color: #f9f9f9; /* Optionnel: Couleur de fond */
-  }
-  
-  .form-container h6,
-  .form-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .form-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    flex: 1;
-    font-weight: bold;
-    margin-bottom: 0;
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group .form-text {
-    flex: 2;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .form-group input:disabled {
-    background-color: #e9ecef;
-  }
-  
-  .form-group .form-text {
-    border: none;
-    padding: 0;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .button-group button {
-    width: 48%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .button-group button:hover {
-    background-color: #0056b3;
-  }
-  
-  .cardProduct {
-    width: 18rem;
-    max-height: 40rem;
-    border: #008080 solid 2px;
-  }
-  
+.divOrder {
+  width: 80%;
+  background-color: #f7f5f5;
+  border-radius: 2rem;
+}
+.divInfosCommande{
+  background-color: #e2e0e0;
+  padding: 1%;
  
-  
-  .card-body {
-    text-align: center;
-  }
-  
-  .titreInfos {
-    text-align: center;
-    color: white;
-    background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094238.png');
-    background-size: cover;
-    width: 100%;
-    font-weight: bold;
-    font-family :Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  }
-  
-  .divOrder {
-    width: 100%;
-   
-  }
-  .cardFirst{
-    border: #008080 solid 1px;
-    margin: 5%;
-    padding: 5px;
-  }
-  .divForm {
-    margin-bottom: 20px;
-  }
-  
+}
 
-    .infos-colis {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 10px;
-    justify-content: space-around;
-  }
-/*   
-  .infos-colis .card {
-    flex: 1 1 calc(33.333% - 20px);
-    max-width: calc(33.333% - 20px);
-  } */
-  
+.cardFirst {
+  border: #008080 solid 1px;
+  margin: 2rem;
+  padding: 3px;
+  width: 45rem;
+  border-radius: 1rem;
+}
 
-  
-  .infos-colis .card-body {
-    padding: 15px;
-  }
-  
-  .infos-colis .card-body h3 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .infos-colis .card-body p {
-    margin-bottom: 10px;
-  }
-  
-  .infos-colis .card-body button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #008080;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .infos-colis .card-body button:hover {
-    background-color: #0056b3;
-  }
-  
+.divInfosCard {
+  display: flex;
+  justify-content: space-around;
+}
+
+.titreInfos {
+  text-align: center;
+  border-radius: 1rem;
+  color: white;
+    background-image: url('../../../public/imgBtn.png');
+  background-size: cover;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.form-container {
+  padding: 10px;
+  background-color: #f9f9f9;
+  width: 60%;
+  margin: 2rem 0 2rem 20rem;
+  border: #008080 solid 1px;
+  /* Optionnel: Couleur de fond */
+}
+
+.form-container h6,
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.info:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.form-group label {
+  flex: 1;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.form-group input,
+.form-group select,
+.form-group .form-text {
+  flex: 2;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group input:disabled {
+  background-color: #e9ecef;
+}
+
+.form-group .form-text {
+  border: none;
+  padding: 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button-group button {
+  width: 48%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  background-color: #0056b3;
+}
+
+.cardProduct {
+  display: flex;
+  align-items: stretch;
+  width: 25rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.imgProduct {
+  width: 17.8rem;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.cardProduct:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  position: relative;
+}
+
+.divForm {
+  margin-bottom: 20px;
+}
+.infos-colis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+  justify-content: space-around;
+}
+
+.infos-colis .card-body {
+  padding: 15px;
+}
+
+.infos-colis .card-body h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.infos-colis .card-body p {
+  margin-bottom: 10px;
+}
+
+.infos-colis .card-body button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.newBouton {
+  width: 16%;
+  background-color: #008080;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  margin-left: 15rem;
+}
+
+.newBouton:hover {
+  background-color: white;
+  color: #008080;
+  border: 1px solid #008080;
+  border-radius: 1rem;
+}
+
+.infos-colis .card-body button:hover {
+  background-color: white;
+  color: #008080;
+  border: 1px solid #008080;
+  border-radius: 1rem;
+}

@@ -1,14 +1,22 @@
 /* Style du bouton du menu utilisateur */
+
+.divNav{
+  width:83rem;
+  margin-left:5rem;
+}
+#navBar {
+  width: 100%;
+  background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094227.png');
+  background-size: cover;
+}
+
 .user-menu button {
   background: none;
   border: none;
   cursor: pointer;
   color: white,
 }
-#selected {
-  font-weight: bold;
-  color: #0056b3;
-}
+
 
 .button01 {
   margin-left: 100%;
@@ -27,10 +35,14 @@
   border-radius: 15%;
 }
 
-.navLink {
+.mynavLink {
   font-weight: bold;
-  color: white;
-  margin-right: 20px;
+    color: white;
+    margin-right: 20px;
+    font-size: 18px;
+  font-weight: 500;
+  transition: color 0.2s;
+  text-decoration: none;
 }
 
 .navLink:hover {
@@ -39,10 +51,7 @@
   text-decoration: solid;
 }
 
-#navBar {
-  width: 100%;
-  background-color: #008080;
-}
+
 
 /* Style du menu déroulant */
 .dropdown-menu {
@@ -74,19 +83,11 @@
   padding: 10px;
 }
 
-.dropdown-menu li:hover {
-  background-color: #008080;
-}
-
 /* Style des liens dans le menu */
 .dropdown-menu li button {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.navLink:hover {
-  color: #007bff;
 }
 
 .buttonSearch:hover {

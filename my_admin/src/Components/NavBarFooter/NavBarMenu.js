@@ -11,8 +11,7 @@ import {
   Container,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../../Assets/Styles/Nav.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../../Assets/Styles/nav.css";
 import { ICONES } from '../../Assets/Images/Icones'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,7 +62,7 @@ export default function NavBarMenu() {
   };
 
   return (
-    <Container>
+    <div className="divNav">
       <Navbar
         id="navBar"
         variant="white"
@@ -144,6 +143,6 @@ export default function NavBarMenu() {
           </div>
         </Nav>
       </Navbar>
-    </Container>
+    </div>
   );
 }

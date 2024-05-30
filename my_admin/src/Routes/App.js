@@ -1,8 +1,7 @@
-import { createBrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home";
 import ProtectedRoute from "../Services/ProtectedRouter";
-import NavBarMenu from "../Components/NavBarFooter/NavBarMenu";
-import Footer from "../Components/NavBarFooter/Footer";
+import Layout from "../Layouts/Layout";
 import SignIn from "../Components/Connection/SignIn";
 import Products from "../Components/Gestion/Products/Products";
 import Trajets from "../Components/Gestion/Trajets/Trajets";
@@ -17,7 +16,6 @@ import Orders from "../Components/Gestion/Orders/Orders";
 import NewOrder from "../Components/Gestion/Orders/NewOrder";
 import OrderUpdate from "../Components/Gestion/Orders/OrderUpdate";
 
-import OrderUpdateUser from "../Components/Gestion/Orders/OrderUpdateUser";
 
 const token = localStorage.getItem("token");
 const userRole = localStorage.getItem("userRole");
@@ -25,142 +23,129 @@ const userRole = localStorage.getItem("userRole");
 console.log("userRole", userRole);
 
 const router = createBrowserRouter([
-  { path: "/", element: <SignIn /> },
 
   {
-    path: "/home/admin/:userId",
+    path: "/",
     element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <Home />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/products",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1} >
-        <NavBarMenu />
-        <Products />
-        <Footer />
-      </ProtectedRoute>
+      <SignIn />
     ),
   },
 
-  {
-    path: "/home/admin/:userId/products/newProduct",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <NewProduct />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/products/:productId",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <ProductCard  />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-
-  {
-    path: "/home/admin/:userId/trajets",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <Trajets />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/trajets/newTrajet",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <AddNewTrajet/>
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/trajets/:trajetId",
-    element: (
-      <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <TrajetUpdate />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-
-  {
-    path: "/home/admin/:userId/users",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <Users />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/users/newUser",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <NewUser />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  { 
-    path: "/home/admin/:userId/users/:userIdChange",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <UserUpdate />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  { 
-    path: "/home/admin/:userId/orders",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <Orders />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/trajets/:trajetId/newOrder",
-    element: (
-      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <NewOrder />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/home/admin/:userId/orders/:orderId",
-    element: (
-      <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
-        <NavBarMenu />
-        <OrderUpdateUser />
-        <Footer />
-      </ProtectedRoute>
-    ),
-  },
+  { path: "//home/admin/:userId", element: <Layout />,
+  children: [
+    {
+      path: "/home/admin/:userId",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+         
+          <Home />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/products",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1} >
+          {/* <NavBarMenu /> */}
+          <Products />
+          {/* <Footer /> */}
+        </ProtectedRoute>
+      ),
+    },
   
+    {
+      path: "/home/admin/:userId/products/newProduct",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <NewProduct />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/products/:productId",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <ProductCard  />
+        </ProtectedRoute>
+      ),
+    },
+  
+    {
+      path: "/home/admin/:userId/trajets",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <Trajets />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/trajets/newTrajet",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <AddNewTrajet/>
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/trajets/:trajetId",
+      element: (
+        <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
+          <TrajetUpdate />
+        </ProtectedRoute>
+      ),
+    },
+  
+    {
+      path: "/home/admin/:userId/users",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <Users />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/users/newUser",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <NewUser />
+        </ProtectedRoute>
+      ),
+    },
+    { 
+      path: "/home/admin/:userId/users/:userIdChange",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <UserUpdate />
+        </ProtectedRoute>
+      ),
+    },
+    { 
+      path: "/home/admin/:userId/orders",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <Orders />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/trajets/:trajetId/newOrder",
+      element: (
+        <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+          <NewOrder />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "/home/admin/:userId/orders/:orderId",
+      element: (
+        <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
+          <OrderUpdate />
+        </ProtectedRoute>
+      ),
+    },
+    
+  ] },
+
 ]);
 
 export default router;

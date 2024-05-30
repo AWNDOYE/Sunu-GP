@@ -4,6 +4,9 @@ import "../../../Assets/Styles/trajet.css";
 import Config from "../../../Services/Config.json";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import "../../../Assets/Styles/allTable.css"
+import { faBellSlash, faBell} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Trajets() {
   //************UTILISATION DU HOOKS USESTATE POUR LA MISE A JOUR DE L'ETAT */
@@ -42,11 +45,11 @@ export default function Trajets() {
   //****************************************************************************************************** */
 
   return (
-    <div>
-      <h1>
-        <strong>Liste des trajets</strong>
+    <div className="product-list-container">
+      <h1 className="product-list-title">
+        <strong>LISTE DES TRAJETS</strong>
       </h1>
-      <Link to={`/home/admin/${userId}/trajets/newTrajet`}>Nouveau Trajet</Link>
+      <Link to={`/home/admin/${userId}/trajets/newTrajet`} className="new-product-link">Nouveau Trajet</Link>
       <table className="product-table">
         <thead>
           <tr className="table-row">
@@ -55,12 +58,8 @@ export default function Trajets() {
             <th>Lieux Arrivée</th>
             <th>Date Départ</th>
             <th>Date D'arrivée</th>
-            <th>Prix Trajet</th>
-            <th>Fréquence </th>
-            <th>Statut</th>
-            <th>Prénom - Auteur</th>
-            <th>Nom </th>
-            <th>Contact</th>
+            <th>Prénom - Nom</th>
+            <th> Statut</th>
           </tr>
         </thead>
         <tbody>
@@ -71,24 +70,26 @@ export default function Trajets() {
               <td>{trajet.trajet_PlaceArrivalName}</td>
               <td>{formatISODate(trajet.trajet_DateDepart)}</td>
               <td>{formatISODate(trajet.trajet_DateArrivee)}</td>
-              <td>{trajet.trajet_zonePrice}</td>
-              <td>{trajet.trajet_FrequenceZone}</td>
-              <td>{trajet.trajet_Statut}</td>
-              <td>{trajet.trajetAuteurs.userFirstName}</td>
-              <td>{trajet.trajetAuteurs.userLastName}</td>
-              <td>{trajet.trajetAuteurs.userNumberPhone}</td>
+              <td>{`${trajet.trajetAuteurs.userFirstName}  ${trajet.trajetAuteurs.userLastName}`}</td>
+              <td>{trajet && trajet.trajet_Statut ?(
+                  <>
+                    <FontAwesomeIcon icon={faBell}/>
+                  </>
+                ) : (
+                    <FontAwesomeIcon icon={faBellSlash}/>
+                )}</td>
               <td>
-                <Link to={`/home/admin/${userId}/trajets/${trajet._id}`}>
+                <Link to={`/home/admin/${userId}/trajets/${trajet._id}`} className="product-link">
                   <strong>Voir Détails</strong>
                 </Link>
               </td>
-              <td>
+              {/* <td>
                 <Link
                   to={`/home/admin/${userId}/trajets/${trajet._id}/newOrder`}
                 >
                   Nouveau Order
                 </Link>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

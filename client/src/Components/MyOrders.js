@@ -1,24 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams, useNavigate,Link } from "react-router-dom";
 import Config from "../Services/Config.json";
-import {  Button } from "react-bootstrap";
-export default function MyOrder() {
+import {
+  Button,
+  Card,
+  CardBody,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+} from "react-bootstrap";
+import "../Assets/Styles/listeOrder.css";
+import { Bounce, Fade, Slide, Zoom } from "react-awesome-reveal";
 
+export default function MyOrder() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userActif, setUserActif] = useState(false);
 
-  const { userId, orderId} = useParams();
- const navigate = useNavigate();
+  const { userId, orderId } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
           `${Config.api_url}/listOrderByUser/${userId}`
         );
-        console.log(response.data.ordersByUser)
+        console.log(response.data.ordersByUser);
         setOrders(response.data);
         setLoading(false);
       } catch (error) {
@@ -32,7 +41,9 @@ export default function MyOrder() {
 
   const findUser = async () => {
     try {
-      const response = await axios.get(`${Config.api_url}/getUserFind/${userId}`);
+      const response = await axios.get(
+        `${Config.api_url}/getUserFind/${userId}`
+      );
       setUserActif(response.data.userFind); // Met à jour le state avec les données de la réponse
       console.log(response.data.userFind);
     } catch (error) {
@@ -51,44 +62,70 @@ export default function MyOrder() {
 
   const handleChangeOrder = (orderId) => {
     if (orderId !== "") {
-      setUserActif(true)
+      setUserActif(true);
     }
     if (!userActif) {
       alert("Veuillez vous connecter pour modifier votre commande");
-     navigate("/signIn") 
+      navigate("/signIn");
     } else {
       // navigate("/home/${userId}/neworder");
       navigate(`/home/${userId}/${orderId}`);
     }
-    
   };
 
-
   return (
-    <div>Mes commandes
-    <h2>Mes Commandes</h2>
+    <div className="cardCard">
+      <h1 style={{ textAlign: "center" }}>LISTE COMMANDE</h1>
       {orders.length === 0 ? (
-        <p>Aucune commande trouvée.</p>
+        <Fade>
+          <div className="noOrder">
+            <Bounce duration={3000}><h1  className="noOrderDetails" >
+              Aucune commande trouvée.
+            </h1>
+            <Link className="noOrderDetails noOrderLink" to={`/home/${userId}/trajetList`} ><strong>Commander un trajet</strong></Link>
+            </Bounce>
+          </div>
+        </Fade>
       ) : (
-        <ul>
-          {orders.map(order => (
-            <li key={order._id}>
-              <p>Numéro de commande: {order.order_Numero}</p>
-              <p>Colis: {order.order_Colis.order_ColisName}</p>
-              <p>Status: {order.order_ColisStatus}</p>
-              <p>Coût: {order.order_CoutColis}<sup> F cfa</sup></p>
-              {order && order.order_ColisStatus ==="Colis En Attente"  ? (
-                <>
-                <Button onClick={()=> {handleChangeOrder (order._id)}}>Modifier</Button>
-                
-                </>
-              ) : (
-                <span>Commande non modifiable</span>
-              )}
-            </li>
+        <div className="cardOrders">
+          {orders.map((order) => (
+            <Card className="cardOrder" key={order._id}>
+              <CardTitle className="cardTittle">
+                Commande N° : {order.order_Numero}
+              </CardTitle>
+              <CardBody>
+                <CardText>
+                  <strong>Type Colis commandé :</strong>{" "}
+                  {order.order_Colis.order_ColisName}
+                </CardText>
+                <CardText>
+                  <strong>Status :</strong> {order.order_ColisStatus}
+                </CardText>
+                <CardText>
+                  <strong>Coût :</strong> {order.order_CoutColis}
+                  <sup> F cfa</sup>
+                </CardText>
+                {order && order.order_ColisStatus === "Colis En Attente" ? (
+                  <>
+                    <Button
+                      className="newBoutonOrder"
+                      onClick={() => {
+                        handleChangeOrder(order._id);
+                      }}
+                    >
+                      Modifier
+                    </Button>
+                  </>
+                ) : (
+                  <CardText className=" newBoutonOrder newBoutonOrderNotChange">
+                    Commande non modifiable
+                  </CardText>
+                )}
+              </CardBody>
+            </Card>
           ))}
-        </ul>
+        </div>
       )}
     </div>
-  )
+  );
 }

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button, Card, CardBody } from "react-bootstrap";
+import { Form, Button, Card, CardBody, CardTitle } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Config from "../../../Services/Config.json";
+import "../../../Assets/Styles/allProduct.css"
+
 export default function NewUser() {
   const [userData, setUserData] = useState({
     userFirstName: "",
@@ -42,11 +44,12 @@ export default function NewUser() {
 
   return (
     <div>
-      <h1>NOUVEAU UTILISATEUR</h1>
-      <Card>
-        <CardBody>
+      <Card className="card">
+        <CardTitle className="tittleCard">NOUVEAU UTILISATEUR</CardTitle>
+
+        <CardBody className="card-body">
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="userFirstName">
+            <Form.Group className="form-group" controlId="userFirstName">
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 type="text"
@@ -57,7 +60,7 @@ export default function NewUser() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userLastName">
+            <Form.Group className="form-group" controlId="userLastName">
               <Form.Label>Last Name</Form.Label>
               <Form.Control
                 type="text"
@@ -68,7 +71,7 @@ export default function NewUser() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userNumberPhone">
+            <Form.Group className="form-group" controlId="userNumberPhone">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
@@ -79,7 +82,7 @@ export default function NewUser() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userAddress">
+            <Form.Group className="form-group" controlId="userAddress">
               <Form.Label>Address</Form.Label>
               <Form.Control
                 type="text"
@@ -90,7 +93,7 @@ export default function NewUser() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userEmail">
+            <Form.Group className="form-group" controlId="userEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -101,7 +104,7 @@ export default function NewUser() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userPassword">
+            <Form.Group className="form-group" controlId="userPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
@@ -112,7 +115,7 @@ export default function NewUser() {
               />
             </Form.Group>
 
-            <Form.Group controlId="userRole">
+            <Form.Group className="form-group" controlId="userRole">
               <Form.Label>Role</Form.Label>
               <Form.Control
                 as="select"
@@ -126,13 +129,22 @@ export default function NewUser() {
                 {/* Ajoutez d'autres options de rôle selon vos besoins */}
               </Form.Control>
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-            <Button variant="primary" onClick={handleCancel}>
-              Annuler{" "}
-            </Button>
+            <div className="button-group">
+              <Button
+                variant="primary"
+                className="btn btn-primary"
+                type="submit"
+              >
+                Submit
+              </Button>
+              <Button
+                variant="primary"
+                className="btn btn-primary"
+                onClick={handleCancel}
+              >
+                Annuler{" "}
+              </Button>
+            </div>
           </Form>
         </CardBody>
       </Card>

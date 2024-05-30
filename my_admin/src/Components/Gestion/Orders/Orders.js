@@ -4,6 +4,7 @@ import "../../../Assets/Styles/listProducts.css"
 import Config from "../../../Services/Config.json";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import "../../../Assets/Styles/allTable.css"
 
 export default function Orders() {
 
@@ -33,14 +34,14 @@ export default function Orders() {
 
 
   return (
-    <div><h1><strong>SUIVI COMMANDES</strong></h1>
+    <div className="product-list-container">
+    <h1 className="product-list-title"><strong>SUIVI COMMANDES</strong></h1>
      
        <table className="product-table">
           <thead  >
             <tr className="table-row">
             <th>N° Order</th>
               <th>Expéditeur</th>
-              <th>Téléphone</th>
               <th>Type Colis</th>
               <th>Coût</th>
               <th>Infos Destinataire</th>
@@ -53,14 +54,13 @@ export default function Orders() {
               <tr key={index}>
                 <td> {order.order_Numero }</td>
                 <td> {`${order.order_Utilisateurs.user_FirstName} ${order.order_Utilisateurs.user_LastName}`}  </td>
-                <td>{order.order_Utilisateurs.user_NumberPhone}</td>
-                <td> {order.order_Colis.order_ColisName }</td>
-                <td>{order.order_CoutColis}</td>
+                 <td> {order.order_Colis.order_ColisName }</td>
+                <td>{order.order_CoutColis}<sup>Fcfa</sup></td>
                 <td>{order.order_Destinataires.nameDest}</td>
                 <td>{order.order_ColisStatus}</td>
                 <td>{order.order_TypePayement}</td>
                 <td>
-                <Link to={`/home/admin/${userId}/orders/${order._id}`}><strong>Voir Commande</strong></Link>
+                <Link to={`/home/admin/${userId}/orders/${order._id}`} className="product-link"><strong>Voir Commande</strong></Link>
                 </td>
               </tr>
             ))}

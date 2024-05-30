@@ -1,5 +1,6 @@
 .footer {
-    background-color: #008080; /* Couleur de fond */
+  background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094227.png');
+  background-size: cover; /* Couleur de fond */
     color: #fff; /* Couleur du texte */
     margin-right: 5.5%;
     margin-left: 5.5%;

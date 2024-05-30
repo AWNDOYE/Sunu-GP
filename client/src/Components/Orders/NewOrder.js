@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Config from "../../Services/Config.json";
 import axios from "axios";
-import { Card, CardBody, Form, Button, CardImg } from "react-bootstrap";
+import { Card, CardBody, Form, Button, CardImg, CardTitle } from "react-bootstrap";
 import { calculateCost } from "./CalculateCost";
 import { validerSaisie } from "./ValiderSaisie";
 import { generateOrderNumber } from "./GenerateOrderNumber";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../Assets/Styles/newOrder.css";
+import { Fade, Slide, Zoom } from "react-awesome-reveal";
 export default function NewOrder() {
   const { userId, trajetId } = useParams();
   const navigate = useNavigate();
@@ -308,22 +309,22 @@ export default function NewOrder() {
           {selectedProduct && (
             <>
               <Form.Group className="form-group">
-                <Form.Label>Type Colis</Form.Label>
+                <Form.Label>Type Colis : </Form.Label>
                 <Form.Text>{selectedProduct.colisTypeName}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group">
-                <Form.Label>Descriptif</Form.Label>
+                <Form.Label>Descriptif : </Form.Label>
                 <Form.Text>{selectedProduct.colisDescription}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group">
-                <Form.Label>Prix / KG</Form.Label>
+                <Form.Label>Prix / KG : </Form.Label>
                 <Form.Text>{selectedProduct.colisPriceByKG}</Form.Text>
               </Form.Group>
 
               <Form.Group className="form-group">
-                <Form.Label>Prix / L</Form.Label>
+                <Form.Label>Prix / L : </Form.Label>
                 <Form.Text>{selectedProduct.colisPriceByLitre}</Form.Text>
               </Form.Group>
             </>
@@ -506,11 +507,11 @@ export default function NewOrder() {
             </Form.Control>
           </Form.Group>
 
-          <div className="button-group">
-            <Button variant="primary" type="submit">
+          <div >
+            <Button className="newBouton" variant="primary" type="submit">
               Enregistrer
             </Button>
-            <Button variant="secondary" onClick={handleCancel}>
+            <Button className="newBouton" variant="secondary" onClick={handleCancel}>
               Annuler
             </Button>
           </div>
@@ -521,105 +522,116 @@ export default function NewOrder() {
   //***************************************************** */
   //**On affiche les informations liées au trajet sélectionné précédemment par l'utilisateur, puis on affiche la liste des produits. Lors de la sélection d'un produit, un nouveau formulaire est affiché avec les informations du produits sélectionné et les informations à sasir pour l'ajout de la commande */
   return (
-    <div className="divOrder" style={{ width: "100%" }}>
+    <div className="divOrder">
       {/* NewOrder {trajetId} */}
-      <h1 style={{ textAlign: "center", color: "#008080", marginTop: "1%" }}>
+      <h1 style={{ textAlign: "center", color: "#008080", paddingTop: "2%", fontWeight:"bold" }}>
         NOUVELLE COMMANDE
       </h1>
-      <Card className="cardFirst">
-        <h1 className="titreInfos infoAuteurs">Informations GP</h1>
-        <CardBody>
-          <Form className="divForm">
-            <Form.Group className="form-group">
-              <Form.Label>Nom Prénom : </Form.Label>
-              <Form.Text>{`${trajet.trajetAuteurs.userFirstName} ${trajet.trajetAuteurs.userLastName}`}</Form.Text>
-            </Form.Group>
+      <div className="divInfosCard">
+      
+        <Card className="cardFirst">
+          <CardTitle className="titreInfos ">Informations GP</CardTitle>
+          <CardBody>
 
-            <Form.Group className="form-group">
-              <Form.Label>Adresse Email : </Form.Label>
-              <Form.Text>{trajet.trajetAuteurs.userEmail}</Form.Text>
-            </Form.Group>
+            <Form className="divForm">
+              <Form.Group className="form-group info">
+                <Form.Label>Nom Prénom : </Form.Label>
+                <Form.Text>{`${trajet.trajetAuteurs.userFirstName} ${trajet.trajetAuteurs.userLastName}`}</Form.Text>
+              </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Numéro Téléphone : </Form.Label>
-              <Form.Text>{trajet.trajetAuteurs.userNumberPhone}</Form.Text>
-            </Form.Group>
-          </Form>
-          <h1 className="titreInfos infoTrajet">Informations TRAJET</h1>
-          <Form className="divForm">
-            <Form.Group className="form-group">
-              <Form.Label>Type Zone : </Form.Label>
-              <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
-            </Form.Group>
+              <Form.Group className="form-group info">
+                <Form.Label>Adresse Email : </Form.Label>
+                <Form.Text>{trajet.trajetAuteurs.userEmail}</Form.Text>
+              </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Lieu de Départ : </Form.Label>
-              <Form.Text>{trajet.trajet_PlaceDepartureName}</Form.Text>
-            </Form.Group>
+              <Form.Group className="form-group info">
+                <Form.Label>Numéro Téléphone : </Form.Label>
+                <Form.Text>{trajet.trajetAuteurs.userNumberPhone}</Form.Text>
+              </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Lieu de Destination : </Form.Label>
-              <Form.Text>{trajet.trajet_PlaceArrivalName}</Form.Text>
-            </Form.Group>
+            </Form>
+          </CardBody>
+        </Card>
+        <Card className="cardFirst">
+          <CardBody>
+            <CardTitle className="titreInfos">Informations TRAJET</CardTitle>
+            <Form className="divForm">
+              <Form.Group className="form-group info">
+                <Form.Label>Type Zone : </Form.Label>
+                <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
+              </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Date Départ : </Form.Label>
-              <Form.Text>{formatISODate(trajet.trajet_DateDepart)}</Form.Text>
-            </Form.Group>
+              <Form.Group className="form-group info">
+                <Form.Label>Lieu de Départ : </Form.Label>
+                <Form.Text>{trajet.trajet_PlaceDepartureName}</Form.Text>
+              </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Date d'Arrivée : </Form.Label>
-              <Form.Text>{formatISODate(trajet.trajet_DateArrivee)}</Form.Text>
-            </Form.Group>
+              <Form.Group className="form-group info">
+                <Form.Label>Lieu de Destination : </Form.Label>
+                <Form.Text>{trajet.trajet_PlaceArrivalName}</Form.Text>
+              </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Prix Zone : </Form.Label>
-              <Form.Text>{trajet.trajet_zonePrice}</Form.Text>
-            </Form.Group>
-          </Form>
-        </CardBody>
+              <Form.Group className="form-group info">
+                <Form.Label>Date Départ : </Form.Label>
+                <Form.Text>{formatISODate(trajet.trajet_DateDepart)}</Form.Text>
+              </Form.Group>
 
-        <CardBody>
-          <h1 className="titreInfos infoColist">LISTE DES COLIS</h1>
-          <Form.Group controlId="infosColis" className="infos-colis">
-            {listOfProduct.map((product, index) => (
-              <Card key={index} className="cardProduct">
-                <CardImg
-                  src={`http://localhost:5000/uploads/${product.colisImage}`}
-                  alt="Colis"
-                ></CardImg>
-                {/* <img className="cardImg"
-                  src={`http://localhost:5000/uploads/${product.colisImage}`}
-                  alt="Colis"
-                /> */}
-                <CardBody className="card-body">
-                  <Card.Title>
-                    <strong>{product.colisTypeName}</strong>
-                  </Card.Title>
-                  <Card.Text>
-                    <strong>Prix Par Kilo : </strong>
-                    {product.colisPriceByKG}
-                    <sup> Fcfa</sup>
-                  </Card.Text>
-                  <Card.Text>
-                    <strong>Prix Par Litres : </strong>
-                    {product.colisPriceByLitre}
-                    <sup> Fcfa</sup>
-                  </Card.Text>
-                  <Card.Text>
-                    <strong>Description :</strong>
-                    {product.colisDescription}
-                  </Card.Text>
-                  <Button onClick={() => handleShowProductOrder(product)}>
-                    Commander{" "}
-                  </Button>
-                </CardBody>
-              </Card>
-            ))}
-            {showForm && renderForm()}
-          </Form.Group>
-        </CardBody>
-      </Card>
+              <Form.Group className="form-group info">
+                <Form.Label>Date d'Arrivée : </Form.Label>
+                <Form.Text>
+                  {formatISODate(trajet.trajet_DateArrivee)}
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group className="form-group info">
+                <Form.Label>Prix Zone : </Form.Label>
+                <Form.Text>{trajet.trajet_zonePrice}</Form.Text>
+              </Form.Group>
+            </Form>
+          </CardBody>
+        </Card>
+      </div>
+
+      <div className="divInfosCommande" >
+        <Card style={{margin:"0.5rem", borderRadius:"1rem"}}>
+            <CardBody style={{margin:"1px", borderRadius:"1.5rem", padding:"1rem"}} >
+              <CardTitle className="titreInfos infoColist">LISTE DES COLIS</CardTitle>
+              <Form.Group controlId="infosColis" className="infos-colis">
+                {listOfProduct.map((product, index) => (
+                  <Card key={index} className="cardProduct">
+                    <CardImg className="imgProduct"
+                      src={`http://localhost:5000/uploads/${product.colisImage}`}
+                      alt="Colis"
+                    ></CardImg>
+                    <CardBody className="card-body">
+                      <Card.Title>
+                        <strong>{product.colisTypeName}</strong>
+                      </Card.Title>
+                      <Card.Text>
+                        <strong>Prix Par Kilo : </strong>
+                        {product.colisPriceByKG}
+                        <sup> Fcfa</sup>
+                      </Card.Text>
+                      <Card.Text>
+                        <strong>Prix Par Litres : </strong>
+                        {product.colisPriceByLitre}
+                        <sup> Fcfa</sup>
+                      </Card.Text>
+                      <Card.Text>
+                        <strong>Description :</strong>
+                        {product.colisDescription}
+                      </Card.Text>
+                      <Button onClick={() => handleShowProductOrder(product)}>
+                        Commander{" "}
+                      </Button>
+                    </CardBody>
+                  </Card>
+                ))}
+              </Form.Group>
+            </CardBody>
+          <Card >{showForm && renderForm()}</Card>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -63,7 +63,7 @@ const SignIn = () => {
     <Container id="myContainer">
     <Row>
       <Col className="firstCol" md="6">
-        <img className="FilleConnecte" src="./sunulogo.jpeg" alt="echec" />
+        <img className="FilleConnecte" src="./imageJeune.jpg" alt="echec" />
       </Col>
       <Col className="firstCol" md="6">
         <div className="layout-signin">
@@ -104,7 +104,7 @@ const SignIn = () => {
             <div className="container-right-signin">
               <div className="card-title-signup sign-in">
                 <p id="new-user">Vous N’avez pas de compte ? </p>
-                <Link id="new-user" className="btn-form-connection" to="/signup">
+                <Link id="new-user" className="btn-form-connection" to="/">
                   Contacter l'Administrateur
                 </Link>
               </div>

@@ -5,7 +5,9 @@ import "../../../Assets/Styles//listProducts.css"
 import Config from "../../../Services/Config.json";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import "../../../Assets/Styles/allTable.css"
+import { faCheck, faUserMinus,faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Users() {
 
@@ -27,8 +29,8 @@ export default function Users() {
   }, []); 
 
   return (
-    <div><h1><strong>GESTION DES UTILISATEURS</strong></h1>
-    <Link to={`/home/admin/${userId}/users/newUser`}>NOUVEAU USER</Link>
+    <div className="product-list-container"><h1 className="product-list-title"><strong>GESTION DES UTILISATEURS</strong></h1>
+    <Link to={`/home/admin/${userId}/users/newUser`} className="new-product-link">NOUVEAU USER</Link>
        <table className="product-table">
           <thead  >
             <tr className="table-row">
@@ -48,13 +50,32 @@ export default function Users() {
                 <td>{user.userEmail}</td>
                 <td>{user.userNumberPhone}</td>
                 <td>{user.userAddress}</td>
-                <td>{user.userRole}</td>
+                <td>{user && user.userRole ?(
+                  <>
+                    <FontAwesomeIcon icon={faUserCheck}/>
+                  </>
+                ) : (
+                    <FontAwesomeIcon icon={faUserMinus}/>
+                )} </td>
                 <td>
-                <Link to={`/home/admin/${userId}/users/${user._id}`}><strong>Afficher l'utilisateur</strong></Link>
+                <Link to={`/home/admin/${userId}/users/${user._id}`} className="product-link"><strong>Afficher l'utilisateur</strong></Link>
                 </td>
               </tr>
             ))}
           </tbody>
         </table></div>
-  )
+  ) 
 }
+
+
+// {userActif && userActif.userEmail  ? (
+//   <>
+//     <Nav.Link  className="mynavLink" as={Link} to={`/home/${userId}`}>
+//     Acceuil
+//     </Nav.Link>
+//   </>
+// ) : (
+//   <Nav.Link className="navLink" as={Link} to={"/"}>
+//   Acceuil
+//   </Nav.Link>
+// )}

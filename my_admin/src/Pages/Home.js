@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import axios from "axios";
 import Config from "../Services/Config.json";
 
@@ -29,13 +28,13 @@ export default function Home() {
   //******Récupération des données depuis l'API via UseEffect  */
   useEffect(() => {
     findUser(); // Appeler findProduct une fois que le composant est monté
-  }, []);
+  }, [userId]);
 //************************************************************************************** */
 
 
 
   return (
-    <Container>
+    <div>
       <div>
         Home Admin test
         <h1>Bienvenue, {userActif.userFirstName}!</h1>
@@ -51,6 +50,6 @@ export default function Home() {
         <h1>Bienvenue, {userActif.userFirstName}!</h1>
         <p>Votre ID utilisateur est: {userId}</p>
       </div>
-    </Container>
+    </div>
   );
 }
