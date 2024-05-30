@@ -616,7 +616,7 @@ export default function NewOrder() {
                 </CardBody>
               </Card>
             ))}
-            <div>{showForm && renderForm()}</div>
+            {showForm && renderForm()}
           </Form.Group>
         </CardBody>
       </Card>

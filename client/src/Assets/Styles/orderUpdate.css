@@ -38,33 +38,109 @@
     justify-content: center;
     margin-bottom: 15px;
     width: 100%;
-    padding: 2%;
+    padding: 1%;
   }
+  
   .listProduct{
     border-radius: 2rem;
-    
   }
-  .cardProduct{
+  .productCardList{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+ /* CardStyles.css */
+.product-card {
+  display: flex;
+  align-items: stretch;
+  width: 25rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
 
-  }
-  .card-img{
-    width: 10rem;
-  }
-  .form-group .label {
-   /* justify-content: baseline;
-    font-weight: bold;
-    margin-bottom: 0;
-    width: 100%; */
-  }
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card-img {
+  width: 20rem; /* Adjust width as needed */
+  height: 15rem; /* Adjust height as needed */
+  object-fit: cover;
+  border-right: 1px solid #ddd;
+}
+
+.product-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  position: relative;
+}
+
+.product-card-body > *:not(.product-card-button) {
+  margin-bottom: 10px;
+}
+
+.product-card-button {
+  align-self: flex-end;
+  
+}
+.cardBoutton{
+  background-image: url('../../../public/imgBtn.png');
+  background-size: cover;
+  font-weight: bold;
+}
+
   .labelText{
     color: black;
     text-align: left;
   }
   .labelText:hover {
-    border: 2px solid #007bff; 
-    border-radius: 5%;
+    border: 2px solid #008080; 
+    border-radius: 5rem;
     cursor: pointer; /* Change la couleur de la bordure au survol */
   }
+  .form-group-trajet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .form-group-trajet > label,
+.form-group-trajet > .form-text {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.form-group-trajet > label {
+  grid-column: 1 / span 1;
+}
+
+.form-group-trajet > .form-text {
+  grid-column: 2 / span 1;
+}
+.trajetValide{
+  margin-top: 2rem;
+  border-radius: 2rem;
+  justify-content: center;
+}
+#trajetValide{
+background-color: rgb(229, 226, 226);
+border-radius: 2rem;
+width: 50%;
+margin-left: 20rem;
+padding: 2rem;
+}
+.trajetList{
+  margin: 2rem 0 2rem 0;
+  border-radius: 2rem;
+
+}
   .form-group input,
   .form-group select,
   .form-group .form.text {
@@ -109,6 +185,14 @@
     max-height: 40rem;
     border: #008080 solid 2px;
   }
-  
+  .order{
+    width: 50rem;
+    margin-left: 15rem;
+  }
+  .divBtn{
+    padding-left: 35%;
+
+  }
+
 
   

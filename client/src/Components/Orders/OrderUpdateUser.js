@@ -2,11 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Config from "../../Services/Config.json";
 import axios from "axios";
-import { Card, CardBody, Form, Button ,CardImg} from "react-bootstrap";
+import {
+  Card,
+  CardBody,
+  Form,
+  Button,
+  CardImg,
+  CardSubtitle,
+  CardText,
+} from "react-bootstrap";
 import { formatISODate } from "./ChangeFormatDate";
 import { calculateCost } from "./CalculateCost";
 import { validerSaisie } from "./ValiderSaisie";
-import "../../Assets/Styles/orderUpdate.css"
+import "../../Assets/Styles/orderUpdate.css";
 
 export default function OrderUpdate() {
   const navigate = useNavigate();
@@ -116,7 +124,6 @@ export default function OrderUpdate() {
     };
     fetchData();
   }, [orderId]);
-
 
   const findAllProducts = async () => {
     try {
@@ -321,33 +328,35 @@ export default function OrderUpdate() {
 
   return (
     <div className="divOrder">
-      <h2 style={{textAlign:"center"}}>OrderUpdate N° {orderSelected.order_Numero}</h2>
+      <h2 style={{ textAlign: "center" }}>
+        OrderUpdate N° {orderSelected.order_Numero}
+      </h2>
       <Form className="myForm" onSubmit={handleSubmit}>
         <div className="cardExpColis">
           <Card className="expediteur">
             <CardBody id="bodyExpediteur">
-              <h2 style={{color:"#008080"}}>EXPEDITEUR</h2>
+              <h2 style={{ color: "#008080" }}>EXPEDITEUR</h2>
 
               <Form.Group className="form-group labelText ">
                 <Form.Label>Nom Prénom : </Form.Label>
-                <Form.Text className="labelText" >{`${orderSelected.order_Utilisateurs.user_FirstName} ${orderSelected.order_Utilisateurs.user_LastName}`}</Form.Text>
+                <Form.Text className="labelText">{`${orderSelected.order_Utilisateurs.user_FirstName} ${orderSelected.order_Utilisateurs.user_LastName}`}</Form.Text>
               </Form.Group>
 
-              <Form.Group className="form-group ">
+              <Form.Group className="form-group labelText">
                 <Form.Label>Numéro Téléphone: </Form.Label>
-                <Form.Text className="labelText" >
-                 {orderSelected.order_Utilisateurs.user_NumberPhone} 
+                <Form.Text className="labelText">
+                  {orderSelected.order_Utilisateurs.user_NumberPhone}
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="form-group ">
+              <Form.Group className="form-group labelText">
                 <Form.Label>Email : </Form.Label>
                 <Form.Text className="labelText">
-                {orderSelected.order_Utilisateurs.user_Email}
+                  {orderSelected.order_Utilisateurs.user_Email}
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="form-group ">
+              <Form.Group className="form-group labelText">
                 <Form.Label>Adresse - Location : </Form.Label>
                 <Form.Text className="labelText">
                   {orderSelected.order_Utilisateurs.user_Address}
@@ -357,132 +366,149 @@ export default function OrderUpdate() {
           </Card>
           <Card className="infosColis">
             <CardBody>
-              <h2 style={{color:"#008080"}}>COLIS</h2>
-              <Form.Group className="form-group ">
-                <Form.Label >Type Colis : </Form.Label>
-                <Form.Text className="labelText">{selectedProduct.colisTypeName}</Form.Text>
+              <h2 style={{ color: "#008080" }}>COLIS</h2>
+              <Form.Group className="form-group labelText">
+                <Form.Label>Type Colis : </Form.Label>
+                <Form.Text className="labelText">
+                  {selectedProduct.colisTypeName}
+                </Form.Text>
               </Form.Group>
 
-              <Form.Group className="form-group ">
-                <Form.Label >Descriptif : </Form.Label>
-                <Form.Text className="labelText">{selectedProduct.colisDescription}</Form.Text>
+              <Form.Group className="form-group labelText">
+                <Form.Label>Descriptif : </Form.Label>
+                <Form.Text className="labelText">
+                  {selectedProduct.colisDescription}
+                </Form.Text>
               </Form.Group>
 
-              <Form.Group className="form-group ">
+              <Form.Group className="form-group labelText">
                 {" "}
-                <Form.Label >Prix / KG : </Form.Label>
-                <Form.Text className="labelText">{selectedProduct.colisPriceByKG}</Form.Text>
+                <Form.Label>Prix / KG : </Form.Label>
+                <Form.Text className="labelText">
+                  {selectedProduct.colisPriceByKG}
+                </Form.Text>
               </Form.Group>
 
-              <Form.Group className="form-group ">
+              <Form.Group className="form-group labelText">
                 <Form.Label>Prix / L : </Form.Label>
-                <Form.Text className="labelText">{selectedProduct.colisPriceByLitre}</Form.Text>
+                <Form.Text className="labelText">
+                  {selectedProduct.colisPriceByLitre}
+                </Form.Text>
               </Form.Group>
             </CardBody>
           </Card>
         </div>
         <Card className="listProduct">
-          <CardBody>
-            <Form.Group >
-              {listOfProducts.map((product, index) => (
-                <Card key={index} style={{ width: "25rem" }}>
-                  <CardImg src={`http://localhost:5000/uploads/${product.colisImage}`}
-                    alt="Colis"></CardImg>
-                  <CardBody>
-                    <h3>
-                      <strong>{product.colisTypeName}</strong>
-                    </h3>
-                    <p>{product.colisPriceByKG}</p>
-                    <p>{product.colisPriceByLitre}</p>
-                    <p>{product.colisDescription}</p>
-                    <Button onClick={() => handleSelectProductOrder(product)}>
-                      Commander{" "}
-                    </Button>
-                  </CardBody>
-                </Card>
-              ))}
-            </Form.Group>
+          <Card.Title style={{ textAlign: "center" }}>
+            LISTE DES PRODUITS
+          </Card.Title>
+          <Card.Subtitle style={{ textAlign: "center" }}>
+            Sélection d'un nouveau produit
+          </Card.Subtitle>
+          <CardBody className="productCardList">
+            {listOfProducts.map((product, index) => (
+              <Card key={product.id} className="product-card">
+                <CardImg
+                  src={`http://localhost:5000/uploads/${product.colisImage}`}
+                  alt="Colis"
+                  className="product-card-img"
+                />
+                <CardBody className="product-card-body">
+                  <CardSubtitle>
+                    <strong>{product.colisTypeName}</strong>
+                  </CardSubtitle>
+                  <CardText>
+                    Prix Par Kilo: {product.colisPriceByKG} Fcfa
+                  </CardText>
+                  <CardText>
+                    Prix Par Litre: {product.colisPriceByLitre} Fcfa
+                  </CardText>
+                  <CardText>{product.colisDescription}</CardText>
+                  <Button
+                    className="cardBoutton"
+                    onClick={() => handleSelectProductOrder(product)}
+                  >
+                    Modifier
+                  </Button>
+                </CardBody>
+              </Card>
+            ))}
           </CardBody>
         </Card>
         <Card className="trajetValide">
-          <CardBody>
-            <h2>TRAJET</h2>
-            <Form.Group controlId="trajetAuteurs" className="form-group">
-              <Form.Label>Informations de l'auteur</Form.Label>
-              <Form.Group className="form-group">
-                <Form.Label>Nom Prénom : </Form.Label>
-                <Form.Text>{`${trajet.trajetAuteurs.userFirstName} ${trajet.trajetAuteurs.userLastName}`}</Form.Text>
-              </Form.Group>
+          <CardBody id="trajetValide">
+            <Card.Title>TRAJET N° {trajet._id}</Card.Title>
+            <CardSubtitle>Informations de l'auteur</CardSubtitle>
+            <Form.Group className="form-group-trajet">
+              <Form.Label>Nom Prénom : </Form.Label>
+              <Form.Text>{`${trajet.trajetAuteurs.userFirstName} ${trajet.trajetAuteurs.userLastName}`}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Adresse Email : </Form.Label>
-                <Form.Text>{trajet.trajetAuteurs.userEmail}</Form.Text>
-              </Form.Group>
+              <Form.Label>Adresse Email : </Form.Label>
+              <Form.Text>{trajet.trajetAuteurs.userEmail}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Numéro Téléphone : </Form.Label>
-                <Form.Text>{trajet.trajetAuteurs.userNumberPhone}</Form.Text>
-              </Form.Group>
+              <Form.Label>Numéro Téléphone : </Form.Label>
+              <Form.Text>{trajet.trajetAuteurs.userNumberPhone}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Type Zone : </Form.Label>
-                <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
-              </Form.Group>
+              <Form.Label>Type Zone : </Form.Label>
+              <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Lieu de Départ : </Form.Label>
-                <Form.Text>{trajet.trajet_PlaceDepartureName}</Form.Text>
-              </Form.Group>
+              <Form.Label>Lieu de Départ : </Form.Label>
+              <Form.Text>{trajet.trajet_PlaceDepartureName}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Lieu de Destination : </Form.Label>
-                <Form.Text>{trajet.trajet_PlaceArrivalName}</Form.Text>
-              </Form.Group>
+              <Form.Label>Lieu de Destination : </Form.Label>
+              <Form.Text>{trajet.trajet_PlaceArrivalName}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Date Départ : </Form.Label>
-                <Form.Text>{formatISODate(trajet.trajet_DateDepart)}</Form.Text>
-              </Form.Group>
+              <Form.Label>Date Départ : </Form.Label>
+              <Form.Text>{formatISODate(trajet.trajet_DateDepart)}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Date d'Arrivée : </Form.Label>
-                <Form.Text>
-                  {formatISODate(trajet.trajet_DateArrivee)}
-                </Form.Text>
-              </Form.Group>
+              <Form.Label>Date d'Arrivée : </Form.Label>
+              <Form.Text>{formatISODate(trajet.trajet_DateArrivee)}</Form.Text>
 
-              <Form.Group className="form-group">
-                <Form.Label>Prix Zone : </Form.Label>
-                <Form.Text>{trajet.trajet_zonePrice}</Form.Text>
-              </Form.Group>
+              <Form.Label>Prix Zone : </Form.Label>
+              <Form.Text>
+                {trajet.trajet_zonePrice}
+                <sup>F cfa</sup>
+              </Form.Text>
             </Form.Group>
           </CardBody>
         </Card>
         <Card className="trajetList">
-          <CardBody>
-            <Form.Group className="form-group">
-              {listOfTrajets.map((trajet, index) => (
-                <Card key={index} style={{ width: "25rem" }}>
-                  <CardBody>
-                    <h2>
-                      <strong> ZONE : {trajet.trajet_ZoneType}</strong>
-                    </h2>
-                    <h4>
-                      <strong>{`${trajet.trajet_PlaceDepartureName} - ${trajet.trajet_PlaceArrivalName}`}</strong>
-                    </h4>
+          <Card.Title style={{ textAlign: "center" }}>
+            LISTE DES TRAJETS
+          </Card.Title>
+          <CardSubtitle style={{ textAlign: "center" }}>
+            Sélectionner un nouveau trajet
+          </CardSubtitle>
+          <CardBody className="productCardList">
+            {listOfTrajets.map((trajet, index) => (
+              <Card
+                key={index}
+                className="product-card"
+                style={{ width: "25rem" }}
+              >
+                <CardBody className="product-card-body">
+                  <CardSubtitle>
+                    <strong> ZONE : {trajet.trajet_ZoneType}</strong>
+                  </CardSubtitle>
+                  <CardText>
+                    <strong>De : </strong>
+                    {trajet.trajet_PlaceDepartureName} <span>/</span>
+                    <strong>A :</strong>
+                    {trajet.trajet_PlaceArrivalName}
+                  </CardText>
 
-                    <p>Départ le : {formatISODate(trajet.trajet_DateDepart)}</p>
-                    <p>
-                      Arrivé le : {formatISODate(trajet.trajet_DateArrivee)}
-                    </p>
-                    <p>Prix Zone : {trajet.trajet_zonePrice}</p>
-                    <Button onClick={() => handleSelectTrajetOrder(trajet)}>
-                      Commander{" "}
-                    </Button>
-                  </CardBody>
-                </Card>
-              ))}
-            </Form.Group>
+                  <p>Départ le : {formatISODate(trajet.trajet_DateDepart)}</p>
+                  <p>Arrivé le : {formatISODate(trajet.trajet_DateArrivee)}</p>
+                  <p>Prix Zone : {trajet.trajet_zonePrice}</p>
+                  <Button
+                    className="cardBoutton"
+                    onClick={() => handleSelectTrajetOrder(trajet)}
+                  >
+                    Modifier Trajet{" "}
+                  </Button>
+                </CardBody>
+              </Card>
+            ))}
           </CardBody>
         </Card>
         <Card className="order">
@@ -537,9 +563,8 @@ export default function OrderUpdate() {
                 onFocus={handleFocus}
               />
             </Form.Group>
-
-            <Form.Group controlId="destinataire" className="form-group">
-              <h2>Destinataire</h2>
+            <h5>Destinataire</h5>
+            <Form.Group className="form-group">
               <Form.Label>Nom - Prénom</Form.Label>
               <Form.Control
                 type="text"
@@ -557,7 +582,8 @@ export default function OrderUpdate() {
                 }}
                 required
               />
-
+              </Form.Group>
+              <Form.Group className="form-group">
               <Form.Label>Numéro Téléphone</Form.Label>
               <Form.Control
                 type="number"
@@ -576,7 +602,8 @@ export default function OrderUpdate() {
                 }}
                 required
               />
-
+              </Form.Group>
+              <Form.Group className="form-group">
               <Form.Label>Adresse Domicile</Form.Label>
               <Form.Control
                 type="text"
@@ -620,6 +647,7 @@ export default function OrderUpdate() {
                   })
                 }
                 required
+                
               >
                 <option value="">Sélectionner un type</option>
                 <option value="Wave">Wave</option>
@@ -647,6 +675,7 @@ export default function OrderUpdate() {
                   })
                 }
                 required
+                disabled
               >
                 <option value="Colis Transmis">Colis Transmis</option>
                 <option value="Colis En Attente">Colis En Attente</option>
@@ -657,15 +686,16 @@ export default function OrderUpdate() {
               </Form.Control>
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+<div className="divBtn"><Button className="cardBoutton" variant="primary" type="submit">
               Enregistrer
-            </Button>
-            <Button variant="primary" onClick={handleDeleteOrder}>
+            </Button><span>    </span>
+            <Button  className="cardBoutton btn" variant="primary" onClick={handleDeleteOrder}>
               Supprimer
-            </Button>
-            <Button variant="primary" onClick={handleCancel}>
+            </Button><span>    </span>
+            <Button className="cardBoutton" variant="primary" onClick={handleCancel}>
               Annuler
-            </Button>
+            </Button></div>
+            
           </CardBody>
         </Card>
       </Form>
