@@ -19,14 +19,15 @@ export default function Footer() {
         <h6><strong>Contact</strong></h6>
          <div className='contact'> 
           
-            <div className='InfoContact'><FontAwesomeIcon className='icone' icon={ICONES.call } /><p> +221 78 541 54 45</p></div>
-            <div className='InfoContact'><FontAwesomeIcon className='icone' icon={ICONES.facebook} /><p>awiish@facebook.com</p></div>
-            <div className='InfoContact'><FontAwesomeIcon  className='icone' icon={ICONES.twitter} /><p>awiish@twitter.com</p></div>
-            <div className='InfoContact'><FontAwesomeIcon className='icone' icon={ICONES.instagram} /><p>awiish@instargram.com</p></div>
-            <div className='InfoContact'><FontAwesomeIcon className='icone' icon={ICONES.linkedin} /><p>awiish@linkedIn.com</p></div>
-            <div className='InfoContact'> <FontAwesomeIcon className='icone' icon={ICONES.youtube} /><p>awiish@youTube.com</p></div>
+            <div className='InfoContactFooter'><FontAwesomeIcon className='icone' icon={ICONES.call } /><p> +221 78 541 54 45</p></div>
+            <div className='InfoContactFooter'><FontAwesomeIcon className='icone' icon={ICONES.facebook} /><p>sunugp@facebook.com</p></div>
+            <div className='InfoContactFooter'><FontAwesomeIcon  className='icone' icon={ICONES.twitter} /><p>sunugp@twitter.com</p></div>
+            <div className='InfoContactFooter'><FontAwesomeIcon className='icone' icon={ICONES.instagram} /><p>sunugp@instargram.com</p></div>
+            <div className='InfoContactFooter'><FontAwesomeIcon className='icone' icon={ICONES.linkedin} /><p>sunugp@linkedIn.com</p></div>
+            <div className='InfoContactFooter'> <FontAwesomeIcon className='icone' icon={ICONES.youtube} /><p>sunugp@youTube.com</p></div>
           
         </div>
+        
         {/* </div> */}
     {/* </div> */}
   </footer></div>

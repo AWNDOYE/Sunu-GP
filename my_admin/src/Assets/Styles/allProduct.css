@@ -72,7 +72,19 @@
     background-image: url('../Images/deep-black-flat-background-dark-600nw-1217166283.webp');
     background-size: cover;
   }
-  
+  .btnFermer{
+    font-size: 16px;
+    width: 12%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    border: none;
+    margin-left: 55rem;
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-image: url('../Images/deep-black-flat-background-dark-600nw-1217166283.webp');
+    background-size: cover;
+  }
   
   .button-group .btn-primary {
     background-color: #007bff;
@@ -81,6 +93,19 @@
   
   .button-group .btn-primary:hover {
     background-color: #0056b3;
+    background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094238.png');
+    background-size: cover;
+  }
+  .btnShowUsers{
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 100%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    border: none;
+    color: #014747;
+    border-radius: 2rem;
+    cursor: pointer;
     background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094238.png');
     background-size: cover;
   }

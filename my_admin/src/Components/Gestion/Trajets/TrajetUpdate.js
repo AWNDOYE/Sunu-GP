@@ -8,7 +8,6 @@ import {
   CardTitle,
   CardSubtitle
 } from "react-bootstrap";
-
 import citiesWithAirports from "../../../Data/TownsList";
 import regionsSenegal from "../../../Data/RegionalList";
 import neighborhoodsDakar from "../../../Data/DepartementList";
@@ -20,7 +19,7 @@ import "../../../Assets/Styles/allProduct.css";
 export default function TrajetUpdate() {
 
   const navigate = useNavigate();
-  const {trajetId } = useParams();
+  const {userId,trajetId } = useParams();
   const [trajet, setTrajet] = useState({
     trajet_ZoneType: "",
     trajet_PlaceDepartureName: "",
@@ -110,7 +109,9 @@ export default function TrajetUpdate() {
   };
 //************************************************************************ */
 
-
+const handleShowUsersTrajet = ()=>{
+  navigate(`/home/admin/${userId}/trajets/${trajetId}/listOfUsers`);
+}
 //***************MAJ TRAJET****************************************************** */
   const handleUpdateTrajet = async () => {
     console.log("okkkkkkkkkkkkkkkkkkk");
@@ -223,6 +224,8 @@ const handleDelete = async () => {
                 onChange={() => {}}
               />
             </Form.Group>
+            <Button className="btnShowUsers" onClick={handleShowUsersTrajet}>Afficher la liste des utilisateurs du trajet N° {trajet._id}</Button>
+
             </div>
             <div style={{ width: "40rem" }}>
             <CardSubtitle className="infoAuteurTrajet">
@@ -535,6 +538,7 @@ const handleDelete = async () => {
             </div>
         </CardBody>
         </Form>
+        
       </Card>
     </div>
   );

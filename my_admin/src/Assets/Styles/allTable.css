@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-  border: #030a0a solid 3px;
+  border: #008080 solid 3px;
   margin-top: 5rem;
   border-radius: 3rem;
 }
@@ -21,7 +21,7 @@
   display: inline-block;
   margin-bottom: 20px;
   margin: 0 0 20px 55rem;
-  margin-left: 55rem;
+  margin-left: 53rem;
   padding: 10px 20px;
   background-image: url('../Images/Capture\ d\'écran\ 2024-05-28\ 094227.png');
   background-size: cover;

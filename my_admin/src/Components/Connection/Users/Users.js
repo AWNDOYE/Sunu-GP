@@ -6,7 +6,7 @@ import Config from "../../../Services/Config.json";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "../../../Assets/Styles/allTable.css"
-import { faCheck, faUserMinus,faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import {  faUserMinus,faUserGear,faPenToSquare,faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Users() {
@@ -30,7 +30,7 @@ export default function Users() {
 
   return (
     <div className="product-list-container"><h1 className="product-list-title"><strong>GESTION DES UTILISATEURS</strong></h1>
-    <Link to={`/home/admin/${userId}/users/newUser`} className="new-product-link">NOUVEAU USER</Link>
+    <Link to={`/home/admin/${userId}/users/newUser`} className="new-product-link"><FontAwesomeIcon icon={faSquarePlus}/> NOUVEAU USER</Link>
        <table className="product-table">
           <thead  >
             <tr className="table-row">
@@ -52,13 +52,13 @@ export default function Users() {
                 <td>{user.userAddress}</td>
                 <td>{user && user.userRole ?(
                   <>
-                    <FontAwesomeIcon icon={faUserCheck}/>
+                    <FontAwesomeIcon icon={faUserGear}/>
                   </>
                 ) : (
                     <FontAwesomeIcon icon={faUserMinus}/>
                 )} </td>
                 <td>
-                <Link to={`/home/admin/${userId}/users/${user._id}`} className="product-link"><strong>Afficher l'utilisateur</strong></Link>
+                <Link to={`/home/admin/${userId}/users/${user._id}`} className="product-link"><FontAwesomeIcon icon={faPenToSquare}/></Link>
                 </td>
               </tr>
             ))}

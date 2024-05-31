@@ -34,22 +34,8 @@ export default function Home() {
 
 
   return (
-    <div>
-      <div>
-        Home Admin test
-        <h1>Bienvenue, {userActif.userFirstName}!</h1>
-        <p>Votre ID utilisateur est: {userId}</p>
-      </div>
-      <div>
-        Home Admin test
-        <h1>Bienvenue, {userActif.userFirstName}!</h1>
-        <p>Votre ID utilisateur est: {userId}</p>
-      </div>
-      <div>
-        Home Admin test
-        <h1>Bienvenue, {userActif.userFirstName}!</h1>
-        <p>Votre ID utilisateur est: {userId}</p>
-      </div>
+    <div className="myDivHome" style={{width:"100%", marginTop:"3rem", borderRadius:"2rem"}}>
+        <img style={{width:"90.3%", marginLeft:"5rem",borderRadius:"2rem"}} src="/Dash.png" alt="Dash"/>
     </div>
   );
 }

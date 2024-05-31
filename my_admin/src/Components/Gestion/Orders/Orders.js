@@ -5,6 +5,8 @@ import Config from "../../../Services/Config.json";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import "../../../Assets/Styles/allTable.css"
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Orders() {
 
@@ -60,7 +62,7 @@ export default function Orders() {
                 <td>{order.order_ColisStatus}</td>
                 <td>{order.order_TypePayement}</td>
                 <td>
-                <Link to={`/home/admin/${userId}/orders/${order._id}`} className="product-link"><strong>Voir Commande</strong></Link>
+                <Link to={`/home/admin/${userId}/orders/${order._id}`} className="product-link"><strong><FontAwesomeIcon icon={faPenToSquare}/></strong></Link>
                 </td>
               </tr>
             ))}

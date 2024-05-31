@@ -15,7 +15,7 @@ import AddNewTrajet from "../Components/Gestion/Trajets/AddNewTrajet";
 import Orders from "../Components/Gestion/Orders/Orders";
 import NewOrder from "../Components/Gestion/Orders/NewOrder";
 import OrderUpdate from "../Components/Gestion/Orders/OrderUpdate";
-
+import ShowTrajetUsers from "../Components/Gestion/Trajets/ShowTrajetUsers";
 
 const token = localStorage.getItem("token");
 const userRole = localStorage.getItem("userRole");
@@ -94,7 +94,14 @@ const router = createBrowserRouter([
         </ProtectedRoute>
       ),
     },
-  
+    {
+      path: "/home/admin/:userId/trajets/:trajetId/listOfUsers",
+      element: (
+        <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
+          <ShowTrajetUsers />
+        </ProtectedRoute>
+      ),
+    },
     {
       path: "/home/admin/:userId/users",
       element: (
