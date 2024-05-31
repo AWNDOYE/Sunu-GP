@@ -60,10 +60,10 @@ const SignIn = () => {
   };
 
   return (
-    <Container id="myContainer">
-    <Row>
+    <div className="divSignIn">
+    <Row id="myRow">
       <Col className="firstCol" md="6">
-        <img className="FilleConnecte" src="./imageJeune.jpg" alt="echec" />
+        <img className="imgSign" src="./imageJeune.jpg" alt="echec" />
       </Col>
       <Col className="firstCol" md="6">
         <div className="layout-signin">
@@ -96,7 +96,7 @@ const SignIn = () => {
                   required
                 />
               </Form.Group>
-              <Button variant="secondary" type="submit" className="btn-form-connection" id="btn">
+              <Button variant="secondary" type="submit" className="btn-form-connection" id="btnConnexion">
                 Se connecter
               </Button>
             </Form>
@@ -118,7 +118,7 @@ const SignIn = () => {
         </div>
       </Col>
     </Row>
-  </Container>
+  </div>
   
   );
 };

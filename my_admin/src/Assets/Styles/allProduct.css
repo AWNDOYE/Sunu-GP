@@ -7,6 +7,9 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     
   }
+  .orderChange{
+    width: 1000px;
+  }
   .cardChangeProduct{
     max-width: 1000px;
   }
@@ -71,6 +74,9 @@
     cursor: pointer;
     background-image: url('../Images/deep-black-flat-background-dark-600nw-1217166283.webp');
     background-size: cover;
+  }
+  .imgProductCardOrder{
+    width: 10rem;
   }
   .btnFermer{
     font-size: 16px;

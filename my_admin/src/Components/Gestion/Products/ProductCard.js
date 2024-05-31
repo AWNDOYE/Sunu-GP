@@ -72,9 +72,9 @@ const ProductCard = () => {
       formData.append("colisPriceByLitre", product.colisPriceByLitre);
 
       // Vérifier si une nouvelle image a été sélectionnée
-      if (product.colisImage instanceof File) {
-        formData.append("colisImage", product.colisImage); // Ajouter la nouvelle image
-      }
+      // if (product.colisImage instanceof File) {
+      //   formData.append("colisImage", product.colisImage); // Ajouter la nouvelle image
+      // }
       // Vérifier la concordance entre les produits liquides et le prix par L
       if (
         product.colisTypeName === "Produits Liquides" &&
@@ -171,11 +171,15 @@ const ProductCard = () => {
                   required
                 >
                   <option value="">Sélectionner un type</option>
+                  <option value="Sac">Sac</option>
+              <option value="Sachet">Sachet </option>
+              <option value="Emballage">Emballage</option>
                   <option value="Boîte - de 5 Kg">Boîte - de 5 Kg</option>
                   <option value="Boîte + de 5 Kg">Boîte + de 5 Kg</option>
                   <option value="Carton - de 5 Kg">Carton - de 5 Kg</option>
                   <option value="Carton + de 5 Kg">Carton + de 5 Kg</option>
-                  <option value="Produits Liquides">Produits Liquides</option>
+                  <option value="Produits Liquides">Produits Liquides - de 10L</option>
+                  <option value="Produits Liquides">Produits Liquides + de 10L</option>
                   <option value="Valise 23kg Max">Valise 23kg Max</option>
                   <option value="Courrier - Enveloppe - A3">
                     Courrier - Enveloppe - A3
@@ -185,9 +189,6 @@ const ProductCard = () => {
                   </option>
                   <option value="Courrier - Enveloppe - A5">
                     Courrier - Enveloppe - A5
-                  </option>
-                  <option value="Emballage - Sachet - Sac">
-                    Emballage - Sachet - Sac
                   </option>
                 </Form.Select>
               </FormGroup>

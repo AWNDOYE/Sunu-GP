@@ -49,18 +49,18 @@ export default function NewProduct() {
       const handleAdd = async () =>{
         try {
               // Vérifier si le colisTypeName existe déjà dans la base de données
-              const exists = await checkProductExistence(newProduct.colisTypeName);
-              if (exists) {
-                alert("Ce type de produit existe déjà dans la base de données.");
-                return; // Arrêter l'exécution de la fonction si le produit existe déjà
-              }
+              // const exists = await checkProductExistence(newProduct.colisTypeName);
+              // if (exists) {
+              //   alert("Ce type de produit existe déjà dans la base de données.");
+              //   return; // Arrêter l'exécution de la fonction si le produit existe déjà
+              // }
               // Vérifier la concordance entre les produits liquides et le prix par L
               if (newProduct.colisTypeName === "Produits Liquides" && newProduct.colisPriceByLitre === 0) {
                 alert("Le prix par litre doit être spécifié pour les produits liquides");
                 return
               } 
                // Vérifier la concordance entre les produits liquides et le prix par L
-               if (newProduct.colisTypeName !== "Produits Liquides" && newProduct.colisPriceByKG === 0) {
+               if (newProduct.colisTypeName !== "Produits Liquides" && newProduct.colisPriceByKG === 0)  {
                 alert("Le prix par Kg doit être spécifié pour tous les produits exceptés les liquides");
                 return
               } 
@@ -80,6 +80,7 @@ export default function NewProduct() {
           console.log(newProduct)
             const response = await axios.post(
               `${Config.api_url}/createColis`,formData)
+              
             .then((response) => {
               alert('Le produit a été ajouté avec succès dans la base de données.')
               console.log("Mise à jour réussie !", response.data.colisCreated);
@@ -124,16 +125,19 @@ export default function NewProduct() {
               required
             >
               <option value="">Sélectionner un type</option>
+              <option value="Sac">Sac</option>
+              <option value="Sachet">Sachet </option>
+              <option value="Emballage">Emballage</option>
               <option value="Boîte - de 5 Kg">Boîte - de 5 Kg</option>
               <option value="Boîte + de 5 Kg">Boîte + de 5 Kg</option>
               <option value="Carton - de 5 Kg">Carton - de 5 Kg</option>
               <option value="Carton + de 5 Kg">Carton + de 5 Kg</option>
-              <option value="Produits Liquides">Produits Liquides</option>
+              <option value="Produits Liquides">Produits Liquides - de 10L</option>
+              <option value="Produits Liquides 10L">Produits Liquides + de 10L</option>
               <option value="Valise 23kg Max">Valise 23kg Max</option>
               <option value="Courrier - Enveloppe - A3">Courrier - Enveloppe - A3</option>
               <option value="Courrier - Enveloppe - A4">Courrier - Enveloppe - A4</option>
               <option value="Courrier - Enveloppe - A5">Courrier - Enveloppe - A5</option>
-              <option value="Emballage - Sachet - Sac">Emballage - Sachet - Sac</option>
             </FormControl>
           </FormGroup>
           <FormGroup className="form-group">

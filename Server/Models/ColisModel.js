@@ -6,7 +6,6 @@ const ColisShema = new mongoose.Schema(
       //"Courrier - Enveloppe", "Carton - Boîte", "Emballage - Sachet", "Valise"
       type: String,
       require: true,
-      unique : true,
     },
     colisDescription: {
       type: String,

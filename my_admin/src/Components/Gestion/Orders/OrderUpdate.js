@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Config from "../../../Services/Config.json";
 import axios from "axios";
-import { Card, CardBody, Form, Button } from "react-bootstrap";
+import { Card, CardBody, Form, Button, CardTitle, CardSubtitle, CardImg } from "react-bootstrap";
 import { formatISODate } from "./ChangeFormatDate";
+import "../../../Assets/Styles/allProduct.css";
 
 export default function OrderUpdate() {
   const navigate = useNavigate();
@@ -76,7 +77,7 @@ export default function OrderUpdate() {
     colisDescription: "",
     colisPriceByKG: 0,
     colisPriceByLitre: 0,
-    colisImage : "",
+    colisImage: "",
   });
 
   //********SEARCH ORDER BY ID************************************************* */
@@ -87,12 +88,11 @@ export default function OrderUpdate() {
       );
       setOrderSelected(response.data.oneOrder); // Met à jour le state avec les données de la réponse
       console.log(response.data.oneOrder);
-
     } catch (error) {
       console.error("Erreur lors de la recherche de l commande :", error);
     }
   };
- 
+
   //********************************************************************************* */
 
   //********SEARCH TRAJT BY ID************************************************* */
@@ -109,8 +109,8 @@ export default function OrderUpdate() {
   };
   //***********************************************************************/
 
-   //*****************RECHERCHER UN PRODUIT AVEC SON ID*********************
-   const findProduct = async (productId) => {
+  //*****************RECHERCHER UN PRODUIT AVEC SON ID*********************
+  const findProduct = async (productId) => {
     try {
       const response = await axios.get(
         `${Config.api_url}/showColis/${productId}`
@@ -121,43 +121,52 @@ export default function OrderUpdate() {
       console.error("Erreur lors de la recherche du produit :", error);
     }
   };
-//*************************************************************************** */
+  //*************************************************************************** */
   useEffect(() => {
     findOrder(); // Appeler findOrder une fois que le composant est monté
   }, []);
 
   useEffect(() => {
-    if (orderSelected && orderSelected.order_Trajet && orderSelected.order_Trajet.trajet_Id) {
+    if (
+      orderSelected &&
+      orderSelected.order_Trajet &&
+      orderSelected.order_Trajet.trajet_Id
+    ) {
       findTrajet(orderSelected.order_Trajet.trajet_Id);
     }
-    if (orderSelected && orderSelected.order_Colis && orderSelected.order_Colis .colis_Id) {
-      findProduct(orderSelected.order_Colis .colis_Id);
+    if (
+      orderSelected &&
+      orderSelected.order_Colis &&
+      orderSelected.order_Colis.colis_Id
+    ) {
+      findProduct(orderSelected.order_Colis.colis_Id);
     }
   }, [orderSelected]);
-//************************************************************************ */
+  //************************************************************************ */
 
-//************FONCTION APPELLER LORS DE LA SOUMMISSION DU FORMULAIRE************ */
-const handleSubmit = (e) => {
-  e.preventDefault();
-};
- //*Procédure de mise à jour d'un order*/
- const handleChangeOrder = async () => {
-  // Assurez-vous que setTrajet a bien été exécuté avant de continuer
-  try {
-
-    const response = await axios
-    .put(`${Config.api_url}/updateOrder/${orderId}`, orderSelected)
-    .then((response) => {
-      console.log("Mise à jour réussie !", response.data.orderUpdated);
-      alert(`La commande N° ${orderSelected.order_Numero}  a été modifié avec succès`);
-      navigate(-1); // Revenir à la page précédente
-      // Peut-être mettre à jour l'état local ou afficher un message de succès ici
-    })
-  } catch (error) {
-    console.error("Erreur lors de la mise à jour :", error);
-  }
-};
-//************************************************************************* */
+  //************FONCTION APPELLER LORS DE LA SOUMMISSION DU FORMULAIRE************ */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  //*Procédure de mise à jour d'un order*/
+  const handleChangeOrder = async () => {
+    // Assurez-vous que setTrajet a bien été exécuté avant de continuer
+    try {
+      const response = await axios
+        .put(`${Config.api_url}/updateOrder/${orderId}`, orderSelected)
+        .then((response) => {
+          console.log("Mise à jour réussie !", response.data.orderUpdated);
+          alert(
+            `La commande N° ${orderSelected.order_Numero}  a été modifié avec succès`
+          );
+          navigate(-1); // Revenir à la page précédente
+          // Peut-être mettre à jour l'état local ou afficher un message de succès ici
+        });
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour :", error);
+    }
+  };
+  //************************************************************************* */
 
   //******************* ***************************/
   const handleCancel = () => {
@@ -166,199 +175,227 @@ const handleSubmit = (e) => {
   //************************************************************** */
 
   return (
-    <div>
-      OrderUpdate
-      <Card>
-      <Form onSubmit={handleSubmit}>
-        <CardBody>
-          <h2>EXPEDITEUR</h2>
+    <>
+      <Card className="card cardChangeProduct cardTrajet orderChange">
+        <CardTitle className="tittleCard">MODIFICATION COMMANDE</CardTitle>
 
-          <Form.Label>Informations </Form.Label>
-
-          <Form.Group>
-            <Form.Label>Nom Prénom :</Form.Label>
-            <Form.Text>{`${orderSelected.order_Utilisateurs.user_FirstName} ${orderSelected.order_Utilisateurs.user_LastName}`}</Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Numéro Téléphone :</Form.Label>
-            <Form.Text>
-              {orderSelected.order_Utilisateurs.user_NumberPhone}
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Email :</Form.Label>
-            <Form.Text>{orderSelected.order_Utilisateurs.user_Email}</Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Adresse - Location : </Form.Label>
-            <Form.Text>
-              {orderSelected.order_Utilisateurs.user_Address}
-            </Form.Text>
-          </Form.Group>
-        </CardBody>
-
-        <CardBody>
-          <h2>COLIS</h2>
-          <img src={`http://localhost:5000/uploads/${product.colisImage}`} alt="Colis" />
-          <Form.Group>
-            <Form.Label>Type Colis : </Form.Label>
-            <Form.Text>{orderSelected.order_Colis.order_ColisName}</Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Descriptif : </Form.Label>
-            <Form.Text>
-              {orderSelected.order_Colis.order_ColisDescription}
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            {" "}
-            <Form.Label>Prix / KG : </Form.Label>
-            <Form.Text>
-              {orderSelected.order_Colis.order_ColisPriceByKG}
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            <Form.Label>Prix / L : </Form.Label>
-            <Form.Text>
-              {orderSelected.order_Colis.order_ColisPriceByLitre}
-            </Form.Text>
-          </Form.Group>
-        </CardBody>
-
-        <CardBody>
-          <h2>TRAJET</h2>
-          <Form.Group controlId="trajetAuteurs">
-            <Form.Label>Informations de l'auteur</Form.Label>
-            <Form.Group>
-              <Form.Label>Nom Prénom : </Form.Label>
-              <Form.Text>{`${trajet.trajetAuteurs.userFirstName} ${trajet.trajetAuteurs.userLastName}`}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Adresse Email : </Form.Label>
-              <Form.Text>{trajet.trajetAuteurs.userEmail}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Numéro Téléphone : </Form.Label>
-              <Form.Text>{trajet.trajetAuteurs.userNumberPhone}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Type Zone : </Form.Label>
-              <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Lieu de Départ : </Form.Label>
-              <Form.Text>{trajet.trajet_PlaceDepartureName}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Lieu de Destination : </Form.Label>
-              <Form.Text>{trajet.trajet_PlaceArrivalName}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Date Départ : </Form.Label>
-              <Form.Text>{formatISODate(trajet.trajet_DateDepart)}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Date d'Arrivée : </Form.Label>
-              <Form.Text>{formatISODate(trajet.trajet_DateArrivee)}</Form.Text>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Prix Zone : </Form.Label>
-              <Form.Text>{trajet.trajet_zonePrice}</Form.Text>
-            </Form.Group>
-          </Form.Group>
-        </CardBody>
+        <Form onSubmit={handleSubmit}>
+          <CardBody className="card-body cardChangeBody notAlignItems">
+            <div style={{ width: "40rem" }}>
+              <CardSubtitle className="infoAuteurTrajet">
+                INFORMATION AUTEUR
+              </CardSubtitle>
 
 
-        <CardBody>
-          <h2>COMMANDE</h2>
-        </CardBody>
+              <Form.Group className="form-group">
+                <Form.Label>Nom Prénom :</Form.Label>
+                <Form.Text>{`${orderSelected.order_Utilisateurs.user_FirstName} ${orderSelected.order_Utilisateurs.user_LastName}`}</Form.Text>
+              </Form.Group>
 
-        <Form.Group controlId="order_Numero">
-          <Form.Label>Numéro de commande : </Form.Label>
-          <Form.Text>{orderSelected.order_Numero}</Form.Text>
-        </Form.Group>
+              <Form.Group className="form-group">
+                <Form.Label>Numéro Téléphone :</Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Utilisateurs.user_NumberPhone}
+                </Form.Text>
+              </Form.Group>
 
-        <Form.Group controlId="order_NB_Poids">
-          <Form.Label>Poids Total en KG : </Form.Label>
-          <Form.Text>{orderSelected.order_PoidsColis}</Form.Text>
-        </Form.Group>
+              <Form.Group className="form-group">
+                <Form.Label>Email :</Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Utilisateurs.user_Email}
+                </Form.Text>
+              </Form.Group>
 
-        <Form.Group controlId="order_NB_L">
-          <Form.Label>Nombre de Litres : </Form.Label>
-          <Form.Text>{orderSelected.order_NombreDeLitreColis}</Form.Text>
-        </Form.Group>
+              <Form.Group className="form-group">
+                <Form.Label>Adresse - Location : </Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Utilisateurs.user_Address}
+                </Form.Text>
+              </Form.Group>
+            </div>
+            <div style={{ width: "40rem" }}>
+              <CardSubtitle className="infoAuteurTrajet">COLIS</CardSubtitle>
+              <CardImg className="imgProductCardOrder"
+                src={`http://localhost:5000/uploads/${product.colisImage}`}
+                alt="Colis"
+              />
+              <Form.Group className="form-group">
+                <Form.Label>Type Colis : </Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Colis.order_ColisName}
+                </Form.Text>
+              </Form.Group>
 
-        <Form.Group controlId="destinataire">
-          <h2>Destinataire</h2>
-          <Form.Group><Form.Label>Nom - Prénom : </Form.Label>
-          <Form.Text>{orderSelected.order_Destinataires.nameDest}</Form.Text></Form.Group>
-          
+              <Form.Group className="form-group">
+                <Form.Label>Descriptif : </Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Colis.order_ColisDescription}
+                </Form.Text>
+              </Form.Group>
 
-          <Form.Group><Form.Label>Numéro Téléphone : </Form.Label>
-          <Form.Text>
-            {orderSelected.order_Destinataires.telephoneDest}
-          </Form.Text></Form.Group>
-          
+              <Form.Group className="form-group">
+                {" "}
+                <Form.Label>Prix / KG : </Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Colis.order_ColisPriceByKG}
+                </Form.Text>
+              </Form.Group>
 
-          <Form.Group><Form.Label>Adresse Domicile : </Form.Label>
-          <Form.Text>{orderSelected.order_Destinataires.adresseDest}</Form.Text></Form.Group>
-          
-        </Form.Group>
+              <Form.Group className="form-group">
+                <Form.Label>Prix / L : </Form.Label>
+                <Form.Text>
+                  {orderSelected.order_Colis.order_ColisPriceByLitre}
+                </Form.Text>
+              </Form.Group>
+            </div>
 
-        <Form.Group controlId="order_Cout">
-          <Form.Label>Coût Total : </Form.Label>
-          <Form.Text>{orderSelected.order_CoutColis}</Form.Text>
-        </Form.Group>
+            <div style={{ width: "40rem" }}>
+              <CardSubtitle className="infoAuteurTrajet">
+                INFORMATION TRAJET
+              </CardSubtitle>
+              <Form.Group controlId="trajetAuteurs">
+                <Form.Group className="form-group">
+                  <Form.Label>Nom Prénom : </Form.Label>
+                  <Form.Text>{`${trajet.trajetAuteurs.userFirstName} ${trajet.trajetAuteurs.userLastName}`}</Form.Text>
+                </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Type Paiement : </Form.Label>
-          <Form.Text>{orderSelected.order_TypePayement}</Form.Text>
-        </Form.Group>
+                <Form.Group className="form-group">
+                  <Form.Label>Adresse Email : </Form.Label>
+                  <Form.Text>{trajet.trajetAuteurs.userEmail}</Form.Text>
+                </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Statut Colis</Form.Label>
-          <Form.Control
-            as="select"
-            name="order_ColisStatus"
-            value={orderSelected.order_ColisStatus}
-            onChange={(e) =>
-              setOrderSelected({
-                ...orderSelected,
-                order_ColisStatus: e.target.value,
-              })
-            }
-            required
-          >
-            <option value="Colis Transmis">Colis Transmis</option>
-            <option value="Colis En Attente">Colis En Attente</option>
-            <option value="Colis En Cours d'Envoi">
-              Colis En Cours d'Envoi
-            </option>
-            <option value="Colis Réceptionné">Colis Réceptionné</option>
-          </Form.Control>
-        </Form.Group>
-        <Button variant="primary" type="submit" onClick={handleChangeOrder}>
-          Enregistrer
-        </Button>
-        <Button variant="primary" onClick={handleCancel}>
-          Annuler
-        </Button>
+                <Form.Group className="form-group">
+                  <Form.Label>Numéro Téléphone : </Form.Label>
+                  <Form.Text>{trajet.trajetAuteurs.userNumberPhone}</Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Type Zone : </Form.Label>
+                  <Form.Text>{trajet.trajet_ZoneType}</Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Lieu de Départ : </Form.Label>
+                  <Form.Text>{trajet.trajet_PlaceDepartureName}</Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Lieu de Destination : </Form.Label>
+                  <Form.Text>{trajet.trajet_PlaceArrivalName}</Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Date Départ : </Form.Label>
+                  <Form.Text>
+                    {formatISODate(trajet.trajet_DateDepart)}
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Date d'Arrivée : </Form.Label>
+                  <Form.Text>
+                    {formatISODate(trajet.trajet_DateArrivee)}
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Prix Zone : </Form.Label>
+                  <Form.Text>{trajet.trajet_zonePrice}</Form.Text>
+                </Form.Group>
+              </Form.Group>
+            </div>
+
+            <div style={{ width: "40rem" }}>
+              <CardSubtitle className="infoAuteurTrajet">COMMANDE</CardSubtitle>
+
+              <Form.Group className="form-group" controlId="order_Numero">
+                <Form.Label>Numéro de commande : </Form.Label>
+                <Form.Text>{orderSelected.order_Numero}</Form.Text>
+              </Form.Group>
+
+              <Form.Group className="form-group" controlId="order_NB_Poids">
+                <Form.Label>Poids Total en KG : </Form.Label>
+                <Form.Text>{orderSelected.order_PoidsColis}</Form.Text>
+              </Form.Group>
+
+              <Form.Group className="form-group" controlId="order_NB_L">
+                <Form.Label>Nombre de Litres : </Form.Label>
+                <Form.Text>{orderSelected.order_NombreDeLitreColis}</Form.Text>
+              </Form.Group>
+
+              <Form.Group className="form-group" controlId="destinataire">
+                <CardSubtitle className="infoAuteurTrajet">Destinataire</CardSubtitle>
+                <Form.Group className="form-group">
+                  <Form.Label>Nom - Prénom : </Form.Label>
+                  <Form.Text>
+                    {orderSelected.order_Destinataires.nameDest}
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Numéro Téléphone : </Form.Label>
+                  <Form.Text>
+                    {orderSelected.order_Destinataires.telephoneDest}
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="form-group">
+                  <Form.Label>Adresse Domicile : </Form.Label>
+                  <Form.Text>
+                    {orderSelected.order_Destinataires.adresseDest}
+                  </Form.Text>
+                </Form.Group>
+              </Form.Group>
+
+              <Form.Group className="form-group" controlId="order_Cout">
+                <Form.Label>Coût Total : </Form.Label>
+                <Form.Text>{orderSelected.order_CoutColis}</Form.Text>
+              </Form.Group>
+
+              <Form.Group className="form-group">
+                <Form.Label>Type Paiement : </Form.Label>
+                <Form.Text>{orderSelected.order_TypePayement}</Form.Text>
+              </Form.Group>
+
+              <Form.Group className="form-group">
+                <Form.Label>Statut Colis</Form.Label>
+                <Form.Control
+                  as="select"
+                  name="order_ColisStatus"
+                  value={orderSelected.order_ColisStatus}
+                  onChange={(e) =>
+                    setOrderSelected({
+                      ...orderSelected,
+                      order_ColisStatus: e.target.value,
+                    })
+                  }
+                  required
+                >
+                  <option value="Colis Transmis">Colis Transmis</option>
+                  <option value="Colis En Attente">Colis En Attente</option>
+                  <option value="Colis En Cours d'Envoi">
+                    Colis En Cours d'Envoi
+                  </option>
+                  <option value="Colis Réceptionné">Colis Réceptionné</option>
+                </Form.Control>
+              </Form.Group>
+              <div className="button-group">
+              <Button
+                variant="primary"
+                className="btn btn-primary"
+                type="submit"
+                onClick={handleChangeOrder}
+              >
+                Enregistrer
+              </Button>
+              <Button variant="primary" onClick={handleCancel} className="btn btn-primary">
+                Annuler
+              </Button>
+              </div>
+            </div>
+          </CardBody>
         </Form>
       </Card>
-    </div>
+    </>
   );
 }
